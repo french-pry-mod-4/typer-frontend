@@ -1,7 +1,15 @@
 import React, {Component} from 'react'
-import SignUp from './SignUp'
-import { Route } from 'react-router-dom'
+import SideBar from './SideBar'
+import Home from './Home'
+import Profile from './Profile'
+import Scoreboard from './Scoreboard'
 import GameBoardContainer from './GameBoardContainer'
+// import SignUp from './SignUp'
+import {
+  BrowserRouter,
+  Route,
+  Switch
+} from 'react-router-dom'
 
 export default class Main extends Component {
   state = {
@@ -44,15 +52,16 @@ export default class Main extends Component {
 
   render () {
     return (
-      <div>
-        <h1>Hello World</h1>
-        <SignUp
-          login={this.handleLogin}
-        />
-        <button onClick={this.handleNewGame}>Start a game</button>
-
-        <p>{ this.state.game.passage ? <GameBoardContainer gameInfo={this.state.game}/> : "click \"Start a game\" button to begin"}</p>
-      </div>
+      <BrowserRouter>
+        <main>
+          <SideBar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/scoreboard" component={Scoreboard} />
+          </Switch>
+        </main>
+      </BrowserRouter>
     )
   }
 }
