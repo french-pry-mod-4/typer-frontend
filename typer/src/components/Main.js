@@ -3,6 +3,7 @@ import SideBar from './SideBar'
 import Home from './Home'
 import Profile from './Profile'
 import Scoreboard from './Scoreboard'
+import GameBoardContainer from './GameBoardContainer'
 // import SignUp from './SignUp'
 import {
   BrowserRouter,
@@ -13,7 +14,8 @@ import {
 export default class Main extends Component {
   state = {
     users: [],
-    loggedIn: false
+    loggedIn: false,
+    game: {}
   }
 
   componentDidMount() {
@@ -26,6 +28,26 @@ export default class Main extends Component {
 
   handleLogin = () => {
     console.log('logged in')
+  }
+
+  handleNewGame = () => {
+    console.log("click")
+    fetch("http://localhost:3000/games", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({speed: 0, accuracy:0})
+    })
+    .then(r => r.json())
+    .then(newGame => {
+      console.log(newGame)
+      // for when routes are set up
+      // this.props.history.push(`/games/${newGame.id}`)
+
+      console.log("text:", newGame.passage.text)
+      this.setState({game:newGame})
+    })
   }
 
   render () {
