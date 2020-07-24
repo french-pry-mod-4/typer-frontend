@@ -1,5 +1,14 @@
 import React, {Component} from 'react'
-import SignUp from './SignUp'
+import SideBar from './SideBar'
+import Home from './Home'
+import Profile from './Profile'
+import Scoreboard from './Scoreboard'
+// import SignUp from './SignUp'
+import {
+  BrowserRouter,
+  Route,
+  Switch
+} from 'react-router-dom'
 
 export default class Main extends Component {
   state = {
@@ -21,12 +30,16 @@ export default class Main extends Component {
 
   render () {
     return (
-      <div>
-        <h1>Hello World</h1>
-        <SignUp
-          login={this.handleLogin}
-        />
-      </div>
+      <BrowserRouter>
+        <main>
+          <SideBar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/scoreboard" component={Scoreboard} />
+          </Switch>
+        </main>
+      </BrowserRouter>
     )
   }
 }
