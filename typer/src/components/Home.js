@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
-import GameBoardContainer from './GameBoardContainer'
+import Tile from './Tile'
+// import GameBoardContainer from './GameBoardContainer'
 
 export default class Home extends Component {
 
   state = {
     users: [],
+    passages: [],
     loggedIn: false,
     game: {}
   }
@@ -14,6 +16,12 @@ export default class Home extends Component {
     .then(r => r.json())
     .then(users => {
       this.setState({users})
+    })
+
+    fetch('http://localhost:3000/passages')
+    .then(r => r.json())
+    .then(passages => {
+      this.setState({passages})
     })
   }
 
@@ -43,14 +51,27 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
-        <h1>This will render the tile container</h1>
-        <p>Inside this will be all of the styled tiles for each game to select</p>
+      <section className="homeWrapper">
+        <div className="filterWrapper">
+          <input type="text" value="Search"/>
+          <select name="Language" id="" value="Language">
+            Language
+              <option value="Language"></option>
+              <option value=""></option>
+              <option value=""></option>
+          </select>
+        </div>
+        <div className="tileWrapper">
+          {this.state.passages.map((passage, index) =>
+            <Tile
+              key={index}
+              text={passage.text}
+              language={passage.language}
+            />
+          )}
+        </div>
 
-          <button onClick={this.handleNewGame}>Start a game</button>
-
-         <p>{ this.state.game.passage ? <GameBoardContainer gameInfo={this.state.game}/> : "click \"Start a game\" button to begin"}</p>
-      </div>
+      </section>
     )
   }
 }

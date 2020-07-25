@@ -1,23 +1,111 @@
+@font-face {
+  font-family: 'Delta Ray Compact';
+  src: url('./assets/fonts/deltaraycompact.ttf');
+}
+
+@font-face {
+  font-family: 'Delta Ray Gradital';
+  src: url('./assets/fonts/deltaraygradital.otf');
+}
+
 .App {
   text-align: center;
-  /* border: 1px solid red; */
   height: 100vh;
   width: 100vw;
-  background-color: #FCFFF5;
+  background-color: #241734;
+  background-image: url('./assets/magenta-grid.png');
+  background-image: url('./assets/magenta-grid.png'), linear-gradient(to right top, #241734, #2b183f, #33184a, #3c1755, #461460, #4b1367, #50116d, #550e74, #550f79, #55107e, #551183, #541388);
+
   display: grid;
   place-items: center;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 110%;
 }
 
 main {
-  /* border: 1px solid green; */
   height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
 }
+
+.logoText {
+  font-family: 'Delta Ray Gradital';
+  background: linear-gradient(to bottom, #ebf1f6 0%,#abd3ee 50%,#859ee2 51%,#d5ebfb 100%);
+  -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+  font-size: 4.5em;
+  position: relative;
+  height: fit-content;
+}
+
+.logoText::before {
+  content: "typ3out";
+  position: absolute;
+  text-shadow: 1px -1px 0 rgba(255,255,255,0.5),
+        3px 1px 3px rgba(255,0,255,0.85),
+        -3px -2px 3px rgba(0,0,255,0.85),
+        1px -2px 0 rgba(255,255,255,0.8);
+  z-index: -1;
+}
+
 nav {
-  border: 1px solid red;
-  width: 20vw;
+  /* background-image: linear-gradient(to top, #ff6c11, #ff6228, #ff5939, #ff5147, #ff4a54, #ff465b, #ff4362, #ff4069, #ff3e6c, #fe3b70, #fe3973, #fd3777); */
+  background-color: rgba(46, 33, 87, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+ backdrop-filter: blur(10px);
+  width: 25vw;
   margin: 0 2vw;
   height: 90vh;
+  position: relative;
+}
+
+
+nav > li:visited {
+  color: #fff;
+}
+
+.homeWrapper {
+  width: 90%;
+  height: 90%;
+}
+
+.tileWrapper {
+  /* border: 1px solid red; */
+  height: 90%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 5vh 5vw;
+  overflow-y: scroll;
+  padding: 2vh 0 2vh;
+  /* padding-bottom: 100px; */
+}
+
+.tileCardWrapper {
+  backdrop-filter: blur(5px) contrast(.8);
+  outline: 10px solid #FF3864;
+  border: 10px solid #2de2e6;
+  width: 15vw;
+  padding: 15px;
+  height: 10vh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  margin-bottom: 10px;
+}
+
+.tileCardWrapper:hover {
+  transition: 1s;
+  transform: scale(1.05);
+  border: 10px solid #FF3864;
+  outline: 10px solid #2de2e6;
+}
+
+.tileCard {
+  border: 1px solid red;
+  height: 95%;
+  width: 95%;
 }
