@@ -3,7 +3,7 @@ import SideBar from './SideBar'
 import Home from './Home'
 import Profile from './Profile'
 import Scoreboard from './Scoreboard'
-import GameBoardContainer from './GameBoardContainer'
+// import GameBoardContainer from './GameBoardContainer'
 // import SignUp from './SignUp'
 import {
   BrowserRouter,

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Tile from './Tile'
-import GameBoardContainer from './GameBoardContainer'
+// import GameBoardContainer from './GameBoardContainer'
 
 export default class Home extends Component {
 
@@ -52,16 +52,25 @@ export default class Home extends Component {
   render() {
     return (
       <section className="homeWrapper">
-        {this.state.passages.map((passage, index) =>
-          <Tile
-            key={index}
-            text={passage.text}
-            language={passage.language}
-          />
-        )}
-          {/* <button onClick={this.handleNewGame}>Start a game</button>
+        <div className="filterWrapper">
+          <input type="text" value="Search"/>
+          <select name="Language" id="" value="Language">
+            Language
+              <option value="Language"></option>
+              <option value=""></option>
+              <option value=""></option>
+          </select>
+        </div>
+        <div className="tileWrapper">
+          {this.state.passages.map((passage, index) =>
+            <Tile
+              key={index}
+              text={passage.text}
+              language={passage.language}
+            />
+          )}
+        </div>
 
-         <p>{ this.state.game.passage ? <GameBoardContainer gameInfo={this.state.game}/> : "click \"Start a game\" button to begin"}</p> */}
       </section>
     )
   }

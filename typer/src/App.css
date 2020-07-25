@@ -1,41 +1,112 @@
+@font-face {
+  font-family: 'Delta Ray Compact';
+  src: url('./assets/fonts/deltaraycompact.ttf');
+}
+
+@font-face {
+  font-family: 'Delta Ray Gradital';
+  src: url('./assets/fonts/deltaraygradital.otf');
+}
+
 .App {
   text-align: center;
-  /* border: 1px solid red; */
   height: 100vh;
   width: 100vw;
-  background-color: #FCFFF5;
+  background-color: #241734;
+  background-image: url('./assets/magenta-grid.png');
+  background-image: url('./assets/magenta-grid.png'), linear-gradient(to right top, #241734, #2b183f, #33184a, #3c1755, #461460, #4b1367, #50116d, #550e74, #550f79, #55107e, #551183, #541388);
+
   display: grid;
   place-items: center;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 110%;
 }
 
 main {
-  /* border: 1px solid green; */
   height: 100vh;
   width: 100vw;
   display: flex;
-  border: 1px solid red;
   align-items: center;
 }
-nav {
+
+.logoText {
+  font-family: 'Delta Ray Gradital';
+  color: #fff;
+  font-size: 3em;
+  position: relative;
+  z-index: 1;
+  /* width: 200px; */
   border: 1px solid red;
-  width: 20vw;
+  height: fit-content;
+}
+
+.logoText::before {
+  content: "typ3out";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  color: #2de2e6;
+  z-index: -1;
+}
+
+.logoText::after {
+  content: "typ3out";
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: #FF3864;
+  z-index: -1;
+}
+
+nav {
+  /* background-color: #36454f; */
+  /* background-image: linear-gradient(to bottom, #650d89, #700885, #790482, #81017e, #89007a, #82016b, #79055d, #700a50, #560e39, #3c0f25, #220d15, #000000); */
+  backdrop-filter: blur(5px) contrast(.8);
+  width: 25vw;
   margin: 0 2vw;
   height: 90vh;
 }
 
+nav > li:visited {
+  color: #fff;
+}
+
 .homeWrapper {
-  display: grid;
-  grid-template-columns: repeat(6, 12vw);
-  grid-gap: 10px;
-  border: 1px solid red;
-  width: fit-content;
+
+  width: 90%;
   height: 90%;
-  overflow: scroll;
+}
+
+.tileWrapper {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 1vw;
+  overflow-y: scroll;
+}
+
+.tileCardWrapper {
+  background-color: #FCFFF5;
+  border: 1px solid black;
+  width: 15vw;
+  padding: 15px;
+  height: 10vh;
+  overflow: hidden;
 }
 
 .tileCard {
   border: 1px solid red;
-  width: 12vw;
-  height: 10vh;
-  overflow: hidden;
+  height: 90%;
+  /* width: 90%; */
 }
+
+/* .tileCard::before {
+  content: "";
+  position: absolute;
+  height: 10vw;
+  width: 15vw;
+  border: 1px solid red;
+} */
