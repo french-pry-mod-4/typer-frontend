@@ -32,81 +32,80 @@ main {
 
 .logoText {
   font-family: 'Delta Ray Gradital';
-  color: #fff;
-  font-size: 3em;
+  background: linear-gradient(to bottom, #ebf1f6 0%,#abd3ee 50%,#859ee2 51%,#d5ebfb 100%);
+  -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+  font-size: 4.5em;
   position: relative;
-  z-index: 1;
-  /* width: 200px; */
-  border: 1px solid red;
   height: fit-content;
 }
 
 .logoText::before {
   content: "typ3out";
   position: absolute;
-  top: 5px;
-  left: 5px;
-  color: #2de2e6;
-  z-index: -1;
-}
-
-.logoText::after {
-  content: "typ3out";
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-  color: #FF3864;
+  text-shadow: 1px -1px 0 rgba(255,255,255,0.5),
+        3px 1px 3px rgba(255,0,255,0.85),
+        -3px -2px 3px rgba(0,0,255,0.85),
+        1px -2px 0 rgba(255,255,255,0.8);
   z-index: -1;
 }
 
 nav {
-  /* background-color: #36454f; */
-  /* background-image: linear-gradient(to bottom, #650d89, #700885, #790482, #81017e, #89007a, #82016b, #79055d, #700a50, #560e39, #3c0f25, #220d15, #000000); */
-  backdrop-filter: blur(5px) contrast(.8);
+  /* background-image: linear-gradient(to top, #ff6c11, #ff6228, #ff5939, #ff5147, #ff4a54, #ff465b, #ff4362, #ff4069, #ff3e6c, #fe3b70, #fe3973, #fd3777); */
+  background-color: rgba(46, 33, 87, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+ backdrop-filter: blur(10px);
   width: 25vw;
   margin: 0 2vw;
   height: 90vh;
+  position: relative;
 }
+
 
 nav > li:visited {
   color: #fff;
 }
 
 .homeWrapper {
-
   width: 90%;
   height: 90%;
 }
 
 .tileWrapper {
-  height: 100%;
+  /* border: 1px solid red; */
+  height: 90%;
   width: 100%;
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(4, auto);
-  grid-gap: 1vw;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 5vh 5vw;
   overflow-y: scroll;
+  padding: 2vh 0 2vh;
+  /* padding-bottom: 100px; */
 }
 
 .tileCardWrapper {
-  background-color: #FCFFF5;
-  border: 1px solid black;
+  backdrop-filter: blur(5px) contrast(.8);
+  outline: 10px solid #FF3864;
+  border: 10px solid #2de2e6;
   width: 15vw;
   padding: 15px;
   height: 10vh;
   overflow: hidden;
+  display: grid;
+  place-items: center;
+  margin-bottom: 10px;
+}
+
+.tileCardWrapper:hover {
+  transition: 1s;
+  transform: scale(1.05);
+  border: 10px solid #FF3864;
+  outline: 10px solid #2de2e6;
 }
 
 .tileCard {
   border: 1px solid red;
-  height: 90%;
-  /* width: 90%; */
+  height: 95%;
+  width: 95%;
 }
-
-/* .tileCard::before {
-  content: "";
-  position: absolute;
-  height: 10vw;
-  width: 15vw;
-  border: 1px solid red;
-} */
