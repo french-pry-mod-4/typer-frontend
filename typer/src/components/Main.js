@@ -3,7 +3,7 @@ import SideBar from './SideBar'
 import Home from './Home'
 import Profile from './Profile'
 import Scoreboard from './Scoreboard'
-// import GameBoardContainer from './GameBoardContainer'
+import GameBoard from './GameBoard'
 // import SignUp from './SignUp'
 import {
   BrowserRouter,
@@ -23,6 +23,9 @@ export default class Main extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/profile" component={Profile} />
             <Route path="/scoreboard" component={Scoreboard} />
+            <Route path="/games/:id" render={routeProps => (
+              <GameBoard {...routeProps} />
+              )} />
           </Switch>
         </main>
       </BrowserRouter>
