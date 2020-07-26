@@ -29,23 +29,29 @@ export default class Home extends Component {
     console.log('logged in')
   }
 
-  handleNewGame = () => {
-    console.log("click")
+  handleNewGame = (id) => {
+    console.log(id)
+    const postBody = {
+      speed: 0,
+      accuracy: 0,
+      passage_id: id
+    }
     fetch("http://localhost:3000/games", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({speed: 0, accuracy:0})
+      body: JSON.stringify(postBody)
     })
     .then(r => r.json())
     .then(newGame => {
       console.log(newGame)
-      // for when routes are set up
-      // this.props.history.push(`/games/${newGame.id}`)
 
       console.log("text:", newGame.passage.text)
       this.setState({game:newGame})
+      // want to display the gameBoard now
+
+      this.props.history.push(`/games/${newGame.id}`)
     })
   }
 
@@ -65,8 +71,10 @@ export default class Home extends Component {
           {this.state.passages.map((passage, index) =>
             <Tile
               key={index}
+              id={passage.id}
               text={passage.text}
               language={passage.language}
+              handleNewGame={this.handleNewGame}
             />
           )}
         </div>
