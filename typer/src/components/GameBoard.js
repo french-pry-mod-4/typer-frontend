@@ -11,16 +11,16 @@ export default class GameBoard extends Component{
     typingInput: "",
     // length: 0,
     // lastLetter: "",
-    correct: 0,
     incorrect: 0, 
     gameStatus: null
   }
 
   // text = this.state.game.passage.text
+  id = this.props.match.params.id
 
   componentDidMount(){
-    const id = this.props.match.params.id
-    fetch(`http://localhost:3000/games/${id}`)
+    // const id = this.props.match.params.id
+    fetch(`http://localhost:3000/games/${this.id}`)
       .then(r => r.json())
       .then(game => {
         this.setState({ game })
@@ -47,14 +47,13 @@ export default class GameBoard extends Component{
       // not sure if this way would work when backspacing
       // length: prevState.length + 1,
       lastLetter: e.target.value.slice(-1)//e.target.value.charAt(prevState.length), //normally length -1 , but since prevState...
-      // correct: 0,
       // incorrect: 0
     })
   }
 
   componentDidUpdate(prevProps, prevState){
-
-    // only if they type somthing
+    
+    // only if user types something
     if (prevState.typingInput !== this.state.typingInput){
 
       const length = this.state.typingInput.length
@@ -64,18 +63,16 @@ export default class GameBoard extends Component{
       const passageChar = this.state.game.passage.text[length -1 ]
 
       // console.log(char === passageChar)
-        if (char === passageChar){
-          this.setState({
-            correct: prevState.correct + 1
-          })
-        }
-        else{
-          this.setState({
-            incorrect: prevState.incorrect + 1
-          })
-        }
-        // console.log("correct", this.state.correct, "incorrect", this.state.incorrect)
-
+      if (char === passageChar){
+        this.setState({
+          correct: prevState.correct + 1
+        })
+      }
+      else{
+        this.setState({
+          incorrect: prevState.incorrect + 1
+        })
+      }
     }
 
   }
@@ -86,27 +83,47 @@ export default class GameBoard extends Component{
         gameStatus: "over"
       })
       console.log(this.calculateAccuracy())
+      console.log("speed (wpm)", this.calculateSpeed())
+      this.updateScores(this.calculateSpeed(), this.calculateAccuracy())
     }
   }
 
+  updateScores(speed, accuracy){
+    const scoreInfo = {
+      speed, 
+      accuracy
+    }
+    console.log(scoreInfo)
+    fetch(`http://localhost:3000/games/${this.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(scoreInfo)
+    })
+    .then(r => r.json())
+    .then(console.log)  
+  }
+
   calculateAccuracy = () => {
-    const correct = this.state.typingInput.length - this.state.incorrect
-    return correct / this.state.typingInput.length
+    const { typingInput, incorrect} = this.state
+    const correct = typingInput.length - incorrect
+    const accuracy = correct / typingInput.length
+    return (accuracy * 100 ).toFixed(2)
   }
 
   calculateSpeed = () => {
     // hardcoded to one minute
-    const numMins = this.state.game.passage.time_alloted
-    // this.state
-    const correct = this.state.typingInput.length - this.state.incorrect
-    return correct / this.state.typingInput.length
+    const { typingInput, game: {passage: {time_allotted}}} = this.state
+    const numMins = time_allotted / 60
+    const cpm = typingInput.length / numMins  //.1 when testing with 6 seconds
+    const wpm = cpm / 5 // maybe average word is 5 char??
+    return Math.round(wpm) // how precise do we want this??
   }
-
 
   // wrapping each character in the passage text in a span for color styling
   renderViewText = () => {return this.state.game.passage.text.split('').map((char, index) => {
     let color = ''
-    // console.log("index", index, "this.state.typingInput.length", this.state.typingInput.length)
     if (index < this.state.typingInput.length){
       if (char === this.state.typingInput[index]){
         color = 'green'
@@ -119,15 +136,30 @@ export default class GameBoard extends Component{
 
   })
 }
+
+// showTimeAllotted = () => {
+//   return this.state.game.passage.time_allotted
+// }
   
 
   render(){
     // console.log("props", this.props)
+    const time = this.state.game ? this.state.game.passage.time_allotted : "test"
+    console.log("time" , time)
     return (
       <div>
-        <Stopwatch gameStatus={this.state.gameStatus} handleGameOver={this.handleGameOver}/>
-        <h4>Correct: {this.state.correct}</h4>
+        <Stopwatch 
+          timeAllotted={this.state.game ? this.state.game.passage.time_allotted : null}
+          gameStatus={this.state.gameStatus} handleGameOver={this.handleGameOver}/>
         <h4>Incorrect: {this.state.incorrect}</h4>
+        {/* If you don't want the incorrect to show up until the game begins, see below (currently commenteed out): */}
+        {/* {this.state.gameStatus ?
+          <h4>Incorrect: {this.state.incorrect}</h4> : null } */}
+        {this.state.gameStatus === "over" ? 
+        <div>
+          <h4>Speed (WPM): {this.calculateSpeed()}</h4>
+          <h4>Accuracy: {this.calculateAccuracy()}%</h4>
+        </div>  : null}
         <p>{this.state.game ? this.renderViewText() : "loading..."}</p>
 
         <textarea name="typingInput" 

@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
 
 export default class Stopwatch extends Component{
-
+  
   state = {
     // isRunning: false,
-    // elapsedTime: 0,
-    // previousTime: 0,
     intervalID: null,
-    timeLeft: 6, // will be based on passage model - time_allotted
-    // endGame: false
+    timeLeft: "" // 6 when testing
   };
 
-  componentDidMount() {
-    // this.intervalID = setInterval(() => this.tick(), 1000);
-    // this.startTimer()
-    // if (this.props.gameStatus === "running"){
-    //   this.startTimer()
-    // }
-  }
+  // componentDidMount() {
+  // }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     // if the game started (by typing in the input feld) and there is no intervalID yet
     // (meaning the timer has not yet started)
     if (this.props.gameStatus === "running" && !this.state.intervalID){ // && !this.state.endGame &&this.state.timeLeft > 0
@@ -30,6 +22,15 @@ export default class Stopwatch extends Component{
       // this.setState({endGame: true})
       this.endGame()
     }
+
+    // when the gameboard fetches the game, set this.state.timeLeft to timeAlloted from the db
+    else if (prevProps.timeAllotted === null && this.props.timeAllotted){
+      this.setState({
+        timeLeft: this.props.timeAllotted
+      })
+    }
+      
+
   }
 
   componentWillUnmount() {
@@ -54,30 +55,15 @@ export default class Stopwatch extends Component{
   endGame(){
     //stopTimer
     clearInterval(this.state.intervalID)
+
+    //PATCH scores to db   -- see gameboard component
+    //and display to user
     this.props.handleGameOver()
 
-    //PATCH scores to db
-    //and display to user
   }
 
-  updateScores(){
-    const scoreInfo = {
-
-    }
-    fetch("http://localhost:3000/games", {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(scoreInfo)
-    })
-    .then(r => r.json())
-    .then(console.log)  
-  }
-
-
+  
   render() {
-
     return (
       <div className="stopwatch">
         <h3 className="stopwatch-time">Time Remaining: { this.state.timeLeft }</h3>
