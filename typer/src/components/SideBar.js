@@ -9,9 +9,9 @@ export default class SideBar extends Component {
       <nav>
         <Logo />
         <ul>
-          <li><NavLink exact to="/">Home</NavLink></li>
-          <li><NavLink to="/profile">Profile</NavLink></li>
-          <li><NavLink to="/scoreboard">Scoreboard</NavLink></li>
+          <NavLink exact to="/"><li className="sidebarItem">Home</li></NavLink>
+          <NavLink to="/profile"><li className="sidebarItem">Stats</li></NavLink>
+          <NavLink to="/scoreboard"><li className="sidebarItem">Scoreboard</li></NavLink>
         </ul>
       </nav>
     )
