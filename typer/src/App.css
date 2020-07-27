@@ -98,7 +98,7 @@ nav {
   background-size: cover;
   background-repeat: no-repeat;
     background-position: center;
-  width: 25vw;
+  width: 20vw;
   margin: 0 2vw;
   height: 90vh;
   position: relative;
@@ -110,23 +110,25 @@ nav {
   list-style-type: none;
   backdrop-filter: blur(35px);
   width: 80%;
-  /* border: 1px solid pink; */
   border-radius: 5px;
-  text-transform: uppercase;
   font-weight: 800;
   height: 7vh;
   margin: 5vh auto;
-  color: red;
+  font-size: 1.5em;
   line-height: 7vh;
   -webkit-box-shadow: 0px 0px 10px 6px rgba(16,215,174, 0.7);
+  border: 2px solid rgb(16,215,174);
   box-shadow: 0px 0px 10px 6px rgba(16,215,174, 0.7);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Outrun Future';
+  text-shadow: 1px 1px 2px #650d89, 0 0 15px #fd1d53, 0 0 5px #fd3777;
+  color: #fff;
 }
 
 .sidebarItem:hover {
   transform: scale(1.05);
   -webkit-box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1);
   box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1);
+  text-shadow: 1px 1px 2px #650d89, 0 0 30px #fd1d53, 0 0 5px #fd3777;
   transition: .75s;
 }
 
