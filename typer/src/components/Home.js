@@ -57,7 +57,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <section className="homeWrapper">
+      <section className="content">
         <div className="filterWrapper">
           <input type="text" value="Search"/>
           <select name="Language" id="" value="Language">
