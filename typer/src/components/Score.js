@@ -5,8 +5,7 @@ export default class Score extends Component {
     console.log(this.props)
     return (
         <tr>
-          {/* TODO put username instead */}
-          <td>User: {this.props.userId}</td>
+          <td>User: {this.props.username}</td>
           <td>Speed: {this.props.speed}</td>
           <td>Accuracy: {this.props.accuracy}</td>
           {/* TODO put passage name instead */}

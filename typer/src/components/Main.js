@@ -15,7 +15,13 @@ import {
 
 export default class Main extends Component {
 
+  state = {
+    user: {}
+  }
 
+  handleLogin = (user) => {
+    this.setState({user})
+  }
   render () {
     return (
       <BrowserRouter>
@@ -26,7 +32,11 @@ export default class Main extends Component {
 
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
-            <Route path="/signup" component={SignUp} />
+            <Route path="/signup" render={() => (
+              <SignUp
+                handleLogIn={this.handleLogin}
+              /> 
+            )}/>
             <Route path="/profile" component={Profile} />
             <Route path="/scoreboard" component={Scoreboard} />
             <Route path="/games/:id" render={routeProps => (

@@ -17,7 +17,7 @@
 
 import React, { useState } from 'react'
 
-const SignUp = () => {
+const SignUp = (props) => {
 
   const [signUpInput, setSignUpInput] = useState({
     username: "",
@@ -39,7 +39,9 @@ const SignUp = () => {
       body: JSON.stringify({username, password})
     })
     .then(r => r.json())
-    .then(console.log)
+    .then(newUser => {
+      props.handleLogIn(newUser)
+    })
   }
 
   const handleChange = (e) => {
