@@ -30,7 +30,11 @@ export default class Main extends Component {
           <Switch>
             
 
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={() => (
+              <Home
+                user={this.state.user}
+              />  
+              )}/>
             <Route path="/login" component={Login} />
             <Route path="/signup" render={() => (
               <SignUp

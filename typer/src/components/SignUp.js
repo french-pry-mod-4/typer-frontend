@@ -16,6 +16,7 @@
 // }
 
 import React, { useState } from 'react'
+import { render } from 'react-dom';
 
 const SignUp = (props) => {
 
@@ -23,6 +24,8 @@ const SignUp = (props) => {
     username: "",
     password: ""
   })
+
+  const [errors, setErrors] = useState([])
 
   const { username, password } = signUpInput;
 
@@ -40,7 +43,13 @@ const SignUp = (props) => {
     })
     .then(r => r.json())
     .then(newUser => {
-      props.handleLogIn(newUser)
+      console.log(newUser)
+      if (newUser.id){
+        props.handleLogIn(newUser)
+      }
+      else {
+        setErrors(newUser)
+      }
     })
   }
 
@@ -48,13 +57,19 @@ const SignUp = (props) => {
     setSignUpInput({...signUpInput, [e.target.name]: e.target.value})
   }
 
+  const renderErrors = () => {
+    return errors.map(error => <><h3 style={{color:"red"}}>{error}</h3></>)
+  }
+
   return(
-    
-    <form onChange={handleChange} onSubmit={handleSubmit}>
-      <input type="text" name="username" value={username} />
-      <input type="password" name="password" value={password}/>
-      <input type="submit"/>
-    </form>
+    <>
+      {errors && renderErrors()}
+      <form onChange={handleChange} onSubmit={handleSubmit}>
+        <input type="text" name="username" value={username} />
+        <input type="password" name="password" value={password}/>
+        <input type="submit"/>
+      </form>
+    </>
   )
 }
 
