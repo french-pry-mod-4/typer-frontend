@@ -8,7 +8,8 @@ export default class Home extends Component {
     users: [],
     passages: [],
     loggedIn: false,
-    game: {}
+    game: {},
+    searchTerm: ""
   }
 
   componentDidMount() {
@@ -55,20 +56,27 @@ export default class Home extends Component {
     })
   }
 
+  searchInput = React.createRef()
+
+  handleSearch = () => {
+    this.setState({searchTerm: this.searchInput.current.value })
+
+  }
+
   render() {
+    const filtered = this.state.passages.filter(psg => psg.text.includes(this.state.searchTerm))
+    // on filtering it looks wonky, can be fixed with adjusting the height to not change
     return (
-      <section className="homeWrapper">
+      <section className="content">
         <div className="filterWrapper">
-          <input type="text" value="Search"/>
-          <select name="Language" id="" value="Language">
-            Language
-              <option value="Language"></option>
-              <option value=""></option>
-              <option value=""></option>
-          </select>
+          <input className="searchBar"
+            type="text"
+            placeholder="Search for a passage..."
+            ref={this.searchInput}
+            onChange={this.handleSearch}/>
         </div>
         <div className="tileWrapper">
-          {this.state.passages.map((passage, index) =>
+          {filtered.map((passage, index) =>
             <Tile
               key={index}
               id={passage.id}
