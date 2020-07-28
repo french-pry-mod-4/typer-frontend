@@ -60,12 +60,12 @@ export default class Home extends Component {
       <section className="content">
         <div className="filterWrapper">
           <input type="text" value="Search"/>
-          <select name="Language" id="" value="Language">
+          {/* <select name="Language" id="" value="Language">
             Language
               <option value="Language"></option>
               <option value=""></option>
               <option value=""></option>
-          </select>
+          </select> */}
         </div>
         <div className="tileWrapper">
           {this.state.passages.map((passage, index) =>

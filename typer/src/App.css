@@ -90,20 +90,22 @@ main {
 }
 
 nav {
-  /* background-image: linear-gradient(to top, #ff6c11, #ff6228, #ff5939, #ff5147, #ff4a54, #ff465b, #ff4362, #ff4069, #ff3e6c, #fe3b70, #fe3973, #fd3777); */
-  /* background-color: rgba(46, 33, 87, 0.3);
-  -webkit-backdrop-filter: blur(10px);*/
   backdrop-filter: blur(10px);
   background-image: url('./assets/skyline.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-    background-position: center;
+  background-position: center;
   width: 20vw;
   margin: 0 2vw;
   height: 90vh;
   position: relative;
   border-radius: 15px;
-  box-shadow: 0px 0px 10px 10px rgba(121,30,148,1);
+  border: 5px solid rgb(253,55,119);
+  box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
+}
+
+nav > * {
+  text-decoration: none;
 }
 
 .sidebarItem {
@@ -141,7 +143,6 @@ nav {
 }
 
 .tileWrapper {
-  /* border: 1px solid red; */
   height: 100%;
   width: 100%;
   display: grid;
@@ -149,9 +150,7 @@ nav {
   grid-template-columns: repeat(3, auto);
   grid-gap: 5vh 5vw;
   overflow-y: scroll;
-  /* padding: 2vh 0 2vh; */
   border: 1px solid red;
-  /* padding-bottom: 100px; */
 }
 
 .tileCardWrapper {
