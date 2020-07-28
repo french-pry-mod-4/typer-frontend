@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Score from './Score'
 
 export default class Profile extends Component {
   state = {
@@ -10,11 +11,10 @@ export default class Profile extends Component {
   componentDidMount() {
     fetch('http://localhost:3000/users/1')
     .then(r => r.json())
-    .then(user => {
+    .then(users => {
       this.setState({
-        // hardcoded the user here :shrug
-        user: user[1].username,
-        games: user[1].games
+        user: users[1].username,
+        games: users[1].games
       })
     })
   }
@@ -40,6 +40,25 @@ export default class Profile extends Component {
               <h3>{parseInt(calcAccuracy / this.state.games.length)}</h3>
             </div>
           </div>
+        </div>
+        <div className="profile-scores">
+          <table className="table-container">
+            <tr>
+              <th>Passage</th>
+              <th>Speed</th>
+              <th>Accuracy</th>
+              <th></th>
+            </tr>
+            {this.state.games.map((game) =>
+                <tr>
+                  <td>{game.id}</td>
+                  <td>{game.speed}</td>
+                  <td>{game.accuracy}</td>
+                  {/* should only show up on hover */}
+                  <td><button>Delete</button></td>
+                </tr>
+              )}
+          </table>
         </div>
       </div>
     )

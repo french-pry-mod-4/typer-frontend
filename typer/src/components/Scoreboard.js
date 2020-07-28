@@ -20,14 +20,14 @@ export default class Scoreboard extends Component {
     return (
       <div>
         <h1>View the High Scores!</h1>
-        <table>
+        <table className="table-container">
         <tr>
           <th>User</th>
           <th>Speed</th>
           <th>Accuracy</th>
           <th>Passage</th>
         </tr>
-           
+
         {this.state.highScores.map((gameScore) =>
             <Score
               key={gameScore.id}
@@ -39,7 +39,7 @@ export default class Scoreboard extends Component {
             />
           )}
 
-  
+
       </table>
       </div>
     )
