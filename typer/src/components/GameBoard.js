@@ -147,7 +147,7 @@ export default class GameBoard extends Component{
     const time = this.state.game ? this.state.game.passage.time_allotted : "test"
     // console.log("time" , time)
     return (
-      <div>
+      <div style={{color:"white"}}>
         <Stopwatch 
           timeAllotted={this.state.game ? this.state.game.passage.time_allotted : null}
           gameStatus={this.state.gameStatus} handleGameOver={this.handleGameOver}/>
