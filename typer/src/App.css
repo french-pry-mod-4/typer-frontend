@@ -19,8 +19,9 @@
   height: 100vh;
   width: 100vw;
   background-color: #241734;
+  /* #A8EB12 */
   background-image: url('./assets/magenta-grid.png');
-  background-image: url('./assets/magenta-grid.png'), linear-gradient(to bottom, #023788, #19327f, #232e75, #292a6c, #2c2663, #2d235c, #2d2155, #2c1e4e, #2a1c47, #291a41, #26193a, #241734);
+  background-image: url('./assets/magenta-grid.png'), linear-gradient(to bottom, #241734, #1e132f, #180f2a, #130926, #0d0221);
   display: grid;
   place-items: center;
   background-position: bottom;
@@ -36,7 +37,19 @@ main {
 }
 
 .logoContainer {
-  height: 200px;
+  height: 300px;
+  position: relative;
+  background-image: url('./assets/vapor-sun.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: grid;
+  place-items: center;
+}
+
+.text-wrapper {
+  /* border: 1px solid red; */
+  width: 300px;
   position: relative;
 }
 
@@ -46,21 +59,23 @@ main {
   -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
   font-size: 100px;
-  position: relative;
-  /* top: 0; */
-  /* padding: 0; */
+   position: relative;
+   padding: 0;
   height: fit-content;
   margin-block-start: 0em;
+  z-index: 21;
 }
 
 .logoText-type::after {
-  content: "typ3out";
+  content: "typ3";
   position: absolute;
+  /* z-index: -1; */
+  left: 0;
   text-shadow: 1px -1px 0 rgba(255,255,255,0.5),
         3px 1px 3px rgba(255,0,255,0.85),
         -3px -2px 3px rgba(0,0,255,0.85),
         1px -2px 0 rgba(255,255,255,0.8);
-  z-index: -1;
+  font-size: 100px;
 }
 
 .logoText-out {
@@ -68,91 +83,113 @@ main {
   color: #fff;
   text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
   font-size: 80px;
-  margin-block-start: 0em;
-    margin-block-end: 0em;
-    position: absolute;
-    top: 5px;
-    right: 5px;
+  line-height: 0;
+  position: absolute;
+  top: 30px;
+  right: 5px;
+  /* z-index: -1; */
 }
 
 nav {
-  /* background-image: linear-gradient(to top, #ff6c11, #ff6228, #ff5939, #ff5147, #ff4a54, #ff465b, #ff4362, #ff4069, #ff3e6c, #fe3b70, #fe3973, #fd3777); */
-  /* background-color: rgba(46, 33, 87, 0.3);
-  -webkit-backdrop-filter: blur(10px);
- backdrop-filter: blur(10px); */
-  width: 25vw;
+  backdrop-filter: blur(10px);
+  background-image: url('./assets/skyline.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20vw;
   margin: 0 2vw;
   height: 90vh;
   position: relative;
+  border-radius: 15px;
+  border: 5px solid rgb(253,55,119);
+  box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
 }
 
-nav > ul {
-  list-style-type: none;
+nav > * {
+  text-decoration: none;
 }
 
 .sidebarItem {
-  background-color: rgba(46, 33, 87, 0.3);
-  -webkit-backdrop-filter: blur(10px);
- backdrop-filter: blur(10px);
- height: 7vh;
- margin: 5vh auto;
- color: red;
-line-height: 7vh;
-  border-radius: 25px;
-  -webkit-box-shadow: 4px 12px 40px 6px rgba(0,0,0,0.09);
-  box-shadow: 4px 12px 40px 6px rgba(0,0,0,0.09);
-  font-family: 'Orbitron', sans-serif;
+  list-style-type: none;
+  backdrop-filter: blur(35px);
+  width: 80%;
+  border-radius: 5px;
+  font-weight: 800;
+  height: 7vh;
+  margin: 5vh auto;
+  font-size: 1.5em;
+  line-height: 7vh;
+  -webkit-box-shadow: 0px 0px 10px 6px rgba(16,215,174, 0.7);
+  border: 2px solid rgb(16,215,174);
+  box-shadow: 0px 0px 10px 6px rgba(16,215,174, 0.7);
+  font-family: 'Outrun Future';
+  text-shadow: 1px 1px 2px #650d89, 0 0 15px #fd1d53, 0 0 5px #fd3777;
+  color: #fff;
 }
 
 .sidebarItem:hover {
   transform: scale(1.05);
-  -webkit-box-shadow: 4px 12px 40px 6px rgba(45,226,230,0.09);
-    box-shadow: 4px 12px 40px 6px rgba(45,226,230,0.09);
+  -webkit-box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1);
+  box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1);
+  text-shadow: 1px 1px 2px #650d89, 0 0 30px #fd1d53, 0 0 5px #fd3777;
   transition: .75s;
 }
 
-.homeWrapper {
-  width: 90%;
-  height: 90%;
+.content {
+  width: 60%;
+  height: 90vh;
+  margin: 0 auto;
+  /* padding: 50px 0; */
+  display: grid;
+  place-items: center;
 }
 
 .tileWrapper {
-  /* border: 1px solid red; */
-  height: 90%;
+  height: 100%;
   width: 100%;
   display: grid;
   place-items: center;
   grid-template-columns: repeat(3, auto);
   grid-gap: 5vh 5vw;
   overflow-y: scroll;
-  padding: 2vh 0 2vh;
-  /* padding-bottom: 100px; */
 }
 
 .tileCardWrapper {
-  backdrop-filter: blur(5px) contrast(.8);
-  outline: 10px solid #FF3864;
-  border: 10px solid #2de2e6;
-  width: 15vw;
+  backdrop-filter: blur(15px) contrast(.8);
+  border: 3px solid #A8EB12;
+  box-shadow: 0px 0px 10px 6px rgba(168, 235, 18,0.7);
+  width: 12vw;
   padding: 15px;
   height: 10vh;
   overflow: hidden;
   display: grid;
   place-items: center;
-  margin-bottom: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  position: relative;
+  /* border: 1px solid red; */
 }
 
 .tileCardWrapper:hover {
   transition: 1s;
   transform: scale(1.05);
-  border: 10px solid #FF3864;
-  outline: 10px solid #2de2e6;
+  border: 3px solid #A8EB12;
+  box-shadow: 0px 0px 10px 6px rgba(168, 235, 18,0.7);
 }
 
 .tileCard {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 95%;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  /* vertical-align: baseline; */
   width: 95%;
+  color: #fff;
+  font-size: 1.1em;
+  text-shadow: 1px 1px 2px #FF6C11, 0 0 25px #FF6C11, 0 0 5px #FF6C11;
+  /* want to find another font to work for this */
+  font-family: 'Orbitron';
 }
 
 
@@ -162,4 +199,21 @@ line-height: 7vh;
 
 .red{
   background-color: red
+}
+
+.filterWrapper {
+  height: 5vh;
+  margin: 20px auto;
+}
+
+.searchBar {
+  font-size: 1.2em;
+  height: 4vh;
+  color: red;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 3px solid #F9c80e;
+  filter: drop-shadow(0 10px 1rem rgba(249, 200, 14,0.7));
+  width: 35vw;
 }
