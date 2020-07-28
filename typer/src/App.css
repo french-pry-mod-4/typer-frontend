@@ -19,8 +19,9 @@
   height: 100vh;
   width: 100vw;
   background-color: #241734;
+  /* #A8EB12 */
   background-image: url('./assets/magenta-grid.png');
-  background-image: url('./assets/magenta-grid.png'), linear-gradient(to bottom, #023788, #19327f, #232e75, #292a6c, #2c2663, #2d235c, #2d2155, #2c1e4e, #2a1c47, #291a41, #26193a, #241734);
+  background-image: url('./assets/magenta-grid.png'), linear-gradient(to bottom, #241734, #1e132f, #180f2a, #130926, #0d0221);
   display: grid;
   place-items: center;
   background-position: bottom;
@@ -136,10 +137,11 @@ nav > * {
 
 .content {
   width: 60%;
-  height: 80vh;
+  height: 90vh;
   margin: 0 auto;
-  padding: 50px;
-  border: 1px solid red;
+  /* padding: 50px 0; */
+  display: grid;
+  place-items: center;
 }
 
 .tileWrapper {
@@ -150,33 +152,44 @@ nav > * {
   grid-template-columns: repeat(3, auto);
   grid-gap: 5vh 5vw;
   overflow-y: scroll;
-  border: 1px solid red;
 }
 
 .tileCardWrapper {
-  backdrop-filter: blur(5px) contrast(.8);
-  outline: 10px solid #FF3864;
-  border: 10px solid #2de2e6;
-  width: 10vw;
+  backdrop-filter: blur(15px) contrast(.8);
+  border: 3px solid #A8EB12;
+  box-shadow: 0px 0px 10px 6px rgba(168, 235, 18,0.7);
+  width: 12vw;
   padding: 15px;
   height: 10vh;
   overflow: hidden;
   display: grid;
   place-items: center;
-  margin-bottom: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  position: relative;
+  /* border: 1px solid red; */
 }
 
 .tileCardWrapper:hover {
   transition: 1s;
   transform: scale(1.05);
-  border: 10px solid #FF3864;
-  outline: 10px solid #2de2e6;
+  border: 3px solid #A8EB12;
+  box-shadow: 0px 0px 10px 6px rgba(168, 235, 18,0.7);
 }
 
 .tileCard {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 95%;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  /* vertical-align: baseline; */
   width: 95%;
+  color: #fff;
+  font-size: 1.1em;
+  text-shadow: 1px 1px 2px #FF6C11, 0 0 25px #FF6C11, 0 0 5px #FF6C11;
+  /* want to find another font to work for this */
+  font-family: 'Orbitron';
 }
 
 
@@ -186,4 +199,21 @@ nav > * {
 
 .red{
   background-color: red
+}
+
+.filterWrapper {
+  height: 5vh;
+  margin: 20px auto;
+}
+
+.searchBar {
+  font-size: 1.2em;
+  height: 4vh;
+  color: red;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 3px solid #F9c80e;
+  filter: drop-shadow(0 10px 1rem rgba(249, 200, 14,0.7));
+  width: 35vw;
 }
