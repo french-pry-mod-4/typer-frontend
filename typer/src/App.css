@@ -163,3 +163,7 @@ line-height: 7vh;
 .red{
   background-color: red
 }
+
+th, td {
+  padding: 10px;
+}

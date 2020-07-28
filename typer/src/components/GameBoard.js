@@ -145,7 +145,7 @@ export default class GameBoard extends Component{
   render(){
     // console.log("props", this.props)
     const time = this.state.game ? this.state.game.passage.time_allotted : "test"
-    console.log("time" , time)
+    // console.log("time" , time)
     return (
       <div>
         <Stopwatch 
