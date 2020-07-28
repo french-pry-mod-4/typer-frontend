@@ -64,7 +64,15 @@ export default class Home extends Component {
   }
 
   render() {
-    const filtered = this.state.passages.filter(psg => psg.text.includes(this.state.searchTerm))
+    const filtered = this.state.passages.filter(psg => {
+      if (psg.name){
+        return psg.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+      }
+      // for those that don't have name (yet) - can still search by text
+      else{
+        return psg.text.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+      }
+    })
     // on filtering it looks wonky, can be fixed with adjusting the height to not change
     return (
       <section className="content">
@@ -80,6 +88,7 @@ export default class Home extends Component {
             <Tile
               key={index}
               id={passage.id}
+              name={passage.name}
               text={passage.text}
               language={passage.language}
               handleNewGame={this.handleNewGame}

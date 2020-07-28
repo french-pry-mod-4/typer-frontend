@@ -8,7 +8,7 @@ export default class Tile extends Component {
           {/* <p>{this.props.language}</p>
           <p>{this.props.text}</p> */}
           {/* first few words of the passage*/}
-          {`${this.props.text.slice(0, 55)}...`}
+          {this.props.name || `${this.props.text.slice(0, 55)}...`}
         </div>
       </div>
     )

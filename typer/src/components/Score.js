@@ -9,7 +9,7 @@ export default class Score extends Component {
           <td>Speed: {this.props.speed}</td>
           <td>Accuracy: {this.props.accuracy}</td>
           {/* TODO put passage name instead */}
-          <td>Passage: {this.props.passage.id}</td>
+          <td>Passage: {this.props.passage.name || this.props.passage.id}</td>
         </tr>
     )
   }
