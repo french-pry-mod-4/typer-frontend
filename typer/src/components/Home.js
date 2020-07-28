@@ -5,7 +5,7 @@ import Tile from './Tile'
 export default class Home extends Component {
 
   state = {
-    users: [],
+    // users: [],
     passages: [],
     loggedIn: false,
     game: {},
@@ -13,11 +13,11 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/users')
-    .then(r => r.json())
-    .then(users => {
-      this.setState({users})
-    })
+    // fetch('http://localhost:3000/users')
+    // .then(r => r.json())
+    // .then(users => {
+    //   this.setState({users})
+    // })
 
     fetch('http://localhost:3000/passages')
     .then(r => r.json())

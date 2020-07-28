@@ -10,7 +10,10 @@ export default class Scoreboard extends Component {
     // fetch high scores
     fetch("http://localhost:3000/games")
       .then(r => r.json())
-      .then(highScores => this.setState({highScores: highScores}))
+      .then(highScores => {
+        console.log("highscores", highScores)
+        this.setState({highScores: highScores}
+        )})
   }
 
   render() {
@@ -29,7 +32,7 @@ export default class Scoreboard extends Component {
             <Score
               key={gameScore.id}
               id={gameScore.id}
-              userId={gameScore.user_id}
+              username={gameScore.user.username}
               speed={gameScore.speed}
               accuracy={gameScore.accuracy}
               passage={gameScore.passage}
