@@ -30,8 +30,8 @@ export default class Main extends Component {
           <Switch>
             
 
-            <Route exact path="/" render={() => (
-              <Home
+            <Route exact path="/" render={routeProps => (
+              <Home {...routeProps}
                 user={this.state.user}
               />  
               )}/>
