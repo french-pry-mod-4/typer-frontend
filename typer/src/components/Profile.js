@@ -19,13 +19,6 @@ export default class Profile extends Component {
     })
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevState.value !== this.state.value) {
-  //     const number = fakeFetch(this.state.number + 1);
-  //     this.setState({ number })
-  //   }
-  // }
-
   componentDidUpdate(prevProps, prevState) {
       if (prevState.games !== this.state.games) {
         fetch('http://localhost:3000/users/1')
