@@ -183,27 +183,26 @@ nav > * {
 }
 
 .tileCard {
-  /* border: 1px solid red; */
   height: 95%;
   text-align: center;
   display: grid;
   place-items: center;
-  /* vertical-align: baseline; */
   width: 95%;
   color: #fff;
   font-size: 1.1em;
   text-shadow: 1px 1px 2px #FF6C11, 0 0 25px #FF6C11, 0 0 5px #FF6C11;
-  /* want to find another font to work for this */
   font-family: 'VCR Mono';
 }
 
 
 .green{
-  background-color: green
+  text-shadow: 1px 1px 2px #CFFF04, 0 0 25px #CFFF04, 0 0 5px #CFFF04;
+  color: #fff;
 }
 
 .red{
-  background-color: red
+  text-shadow: 1px 1px 2px #FD1d53, 0 0 25px #FD1d53, 0 0 5px #FD1d53;
+  color: #fff;
 }
 
 .filterWrapper {
@@ -276,7 +275,17 @@ th, td {
 
 .gameboardContainer {
   color: #fff;
-  background-color: #000;
+  background-color: #241734;
+  padding: 2vh 2vw;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
+}
+
+.passageText {
+  font-family: 'VCR Mono';
+  line-height: 20px;
 }
 
 .profile-scores {

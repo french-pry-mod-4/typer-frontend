@@ -13,11 +13,25 @@ export default class Profile extends Component {
     .then(r => r.json())
     .then(users => {
       this.setState({
-        user: users[1].username,
-        games: users[1].games
+        user: users[0].username,
+        games: users[0].games
       })
     })
   }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevState.value !== this.state.value) {
+  //     const number = fakeFetch(this.state.number + 1);
+  //     this.setState({ number })
+  //   }
+  // }
+
+  componentDidUpdate(prevProps, prevState) {
+      if (prevState.games !== this.state.games) {
+        fetch('http://localhost:3000/users/1')
+        .then(users => console.log(users))
+      }
+    }
 
   handleDelete = (id) => {
     fetch(`http://localhost:3000/games/${id}`, {
