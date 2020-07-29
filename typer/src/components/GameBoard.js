@@ -3,9 +3,6 @@ import Stopwatch from './Stopwatch'
 
 export default class GameBoard extends Component{
 
-
-
-// was originally using variables in componentDidUpdate, but switched it to state...
   state = {
     game: null,
     typingInput: "",
@@ -25,6 +22,19 @@ export default class GameBoard extends Component{
       .then(game => {
         this.setState({ game })
       })
+  }
+
+  componentWillUnmount(){
+    if (!this.state.game.speed){ // speed is null(game wasn't completed) or 0  
+      fetch(`http://localhost:3000/games/${this.id}`, {
+        method: 'DELETE',
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+      .then(r => r.json())
+      .then(response => console.log("deleted:", response))
+    }
   }
 
   handleTyping = (e) => {
