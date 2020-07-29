@@ -3,42 +3,34 @@ import Score from './Score'
 
 export default class Profile extends Component {
   state = {
-    user: "",
+    // user: "",
     games: [],
 
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/users/1')
+    // custom route to get currentUser's game stats
+    fetch('http://localhost:3000/userstats',{
+      credentials: "include"
+    })
     .then(r => r.json())
-    .then(users => {
-      this.setState({
-        user: users[0].username,
-        games: users[0].games
-      })
+    .then(games => {
+      console.log("games", games)
+      this.setState( 
+        { games } )
     })
   }
 
   handleDelete = (id) => {
     fetch(`http://localhost:3000/games/${id}`, {
       method: 'DELETE',
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       }
     })
-    .then(r => r.json())
-    .then(response => {
-      console.log(response)
-
-      const updatedGames = this.state.games.filter(game => game.id !== id)
-      this.setState({
-        games: updatedGames
-      })
-      
-    })
+  console.log('deleted')
   }
-
-
 
   render() {
     const calcWPM = this.state.games.reduce((total, game) => total + game.speed, 0)
@@ -73,9 +65,10 @@ export default class Profile extends Component {
               <th>Delete</th>
             </tr>
             {/* create a div here that you can scroll through */}
+            {console.log("state", this.state)}
             {this.state.games.map((game) =>
                 <tr className="tableRow-data" id={game.id}>
-                  <td>{game.id}</td>
+                  <td>{game.passage.name || game.passage.id}</td>
                   <td>{game.speed}</td>
                   <td>{game.accuracy}%</td>
                   {/* should only show up on hover */}
