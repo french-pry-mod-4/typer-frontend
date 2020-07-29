@@ -49,7 +49,7 @@ export default class Home extends Component {
     .then(newGame => {
       console.log(newGame)
 
-      console.log("text:", newGame.passage.text)
+      console.log(newGame.passage.text)
       this.setState({game:newGame})
       // want to display the gameBoard now
 

@@ -10,8 +10,8 @@ import Login from './Login'
 import {
   BrowserRouter,
   Route,
-  Switch, 
-  withRouter, 
+  Switch,
+  withRouter,
   Redirect
 } from 'react-router-dom'
 
@@ -48,10 +48,10 @@ class Main extends Component {
 
   handleLogout = () => {
     fetch("http://localhost:3000/logout", {
-      credentials: "include" 
+      credentials: "include"
     })
     .then(r => r.json())
-    .then(() => { 
+    .then(() => {
       this.setState({currentUser: null})
     })
   }
@@ -60,7 +60,7 @@ class Main extends Component {
     console.log("in main, state:", this.state)
     return (
       <BrowserRouter>
-        <h3 style={{color:"white"}}>{this.state.currentUser ? `Hi, ${this.state.currentUser.username}`: "Please login"}</h3>
+        {/* <h3 style={{color:"white"}}>{this.state.currentUser ? `Hi, ${this.state.currentUser.username}`: "Please login"}</h3> */}
         <main>
           <SideBar currentUser={this.state.currentUser} handleLogout={this.handleLogout}/>
           <Switch>
@@ -68,17 +68,17 @@ class Main extends Component {
             <Route exact path="/" render={routeProps => (
               <Home {...routeProps}
                 currentUser={this.state.currentUser}
-              />  
+              />
               )}/>
             <Route exact path="/login" render={() => (
               <Login
                 handleLogIn={this.handleLogin}
-              /> 
+              />
             )}/>
             <Route exact path="/signup" render={() => (
               <SignUp
                 handleLogIn={this.handleLogin}
-              /> 
+              />
             )}/>
 
             <Route path="/profile">
