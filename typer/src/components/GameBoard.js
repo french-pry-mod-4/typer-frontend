@@ -17,7 +17,9 @@ export default class GameBoard extends Component{
 
   componentDidMount(){
     // const id = this.props.match.params.id
-    fetch(`http://localhost:3000/games/${this.id}`)
+    fetch(`http://localhost:3000/games/${this.id}`, {
+      credentials: "include"
+    })
       .then(r => r.json())
       .then(game => {
         this.setState({ game })
@@ -28,6 +30,7 @@ export default class GameBoard extends Component{
     if (!this.state.game.speed){ // speed is null(game wasn't completed) or 0  
       fetch(`http://localhost:3000/games/${this.id}`, {
         method: 'DELETE',
+        credentials: "include",
         headers: {
           "Content-Type": "application/json"
         }
@@ -106,13 +109,17 @@ export default class GameBoard extends Component{
     console.log(scoreInfo)
     fetch(`http://localhost:3000/games/${this.id}`, {
       method: "PATCH",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(scoreInfo)
     })
     .then(r => r.json())
-    .then(console.log)
+    .then(updatedGame => {
+      this.setState({ game: updatedGame })
+      console.log(updatedGame)
+    })
   }
 
   calculateAccuracy = () => {
