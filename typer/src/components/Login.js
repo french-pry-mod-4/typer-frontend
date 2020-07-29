@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {withRouter} from 'react-router'
 
 const Login = (props) => {
 
@@ -12,7 +13,6 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    
     // console.log(loginInput)
   
     fetch("http://localhost:3000/login", {
@@ -30,6 +30,8 @@ const Login = (props) => {
       // if login was successful
       if (user.username){
         props.handleLogIn(user)
+        props.history.push("/")
+
       }
       // props.handleLogIn(user)
     })
@@ -40,13 +42,15 @@ const Login = (props) => {
   }
 
   return(
-    
-    <form onChange={handleChange} onSubmit={handleSubmit}>
-      <input type="text" name="username" value={username} />
-      <input type="password" name="password" value={password}/>
-      <input type="submit"/>
-    </form>
+    <>
+    {props.message ? <h3>{props.message}</h3> : null }
+      <form onChange={handleChange} onSubmit={handleSubmit}>
+        <input type="text" name="username" value={username} />
+        <input type="password" name="password" value={password}/>
+        <input type="submit"/>
+      </form>
+    </>
   )
 }
 
-export default Login
+export default withRouter(Login);
