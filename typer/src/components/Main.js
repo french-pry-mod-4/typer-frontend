@@ -10,10 +10,12 @@ import Login from './Login'
 import {
   BrowserRouter,
   Route,
-  Switch
+  Switch, 
+  withRouter, 
+  Redirect
 } from 'react-router-dom'
 
-export default class Main extends Component {
+class Main extends Component {
 
   state = {
     currentUser: null
@@ -40,7 +42,7 @@ export default class Main extends Component {
 
   handleLogin = (currentUser) => {
     this.setState({currentUser}, () => {
-      // this.props.history.push("/home")
+      // this.props.history.push("/")
     })
   }
 
@@ -50,9 +52,7 @@ export default class Main extends Component {
     })
     .then(r => r.json())
     .then(() => { 
-      this.setState({currentUser: null}, () => {
-        // this.props.history.push("/")
-      })
+      this.setState({currentUser: null})
     })
   }
 
@@ -70,18 +70,25 @@ export default class Main extends Component {
                 currentUser={this.state.currentUser}
               />  
               )}/>
-            <Route path="/login" render={() => (
+            <Route exact path="/login" render={() => (
               <Login
                 handleLogIn={this.handleLogin}
               /> 
             )}/>
-            <Route path="/signup" render={() => (
+            <Route exact path="/signup" render={() => (
               <SignUp
                 handleLogIn={this.handleLogin}
               /> 
             )}/>
-            <Route path="/profile" component={Profile} />
+
+            <Route path="/profile">
+              {this.state.currentUser ? <Profile currentUser={this.state.currentUser} /> : <Redirect to='/login' />}
+            </Route>
             <Route path="/scoreboard" component={Scoreboard} />
+
+            {/* <Route path="games/:id">
+              {this.state.currentUser ?  <Profile currentUser={this.state.currentUser} /> : <Redirect to='/login' />}
+            </Route> */}
             <Route path="/games/:id" render={routeProps => (
               <GameBoard {...routeProps} />
               )} />
@@ -91,3 +98,5 @@ export default class Main extends Component {
     )
   }
 }
+
+export default withRouter(Main);
