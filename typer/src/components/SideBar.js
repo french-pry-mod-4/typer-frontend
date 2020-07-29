@@ -1,10 +1,15 @@
 import React, {Component} from 'react'
 import {NavLink} from 'react-router-dom'
+import {withRouter} from 'react-router'
 
 import Logo from './Logo'
 
-export default class SideBar extends Component {
+class SideBar extends Component {
 
+  handleLogoutClick = () => {
+    this.props.handleLogout()
+    this.props.history.push("/")
+  }
   render() {
     const {currentUser, handleLogout } = this.props
     return (
@@ -15,7 +20,7 @@ export default class SideBar extends Component {
         <NavLink exact to="/"><li className="sidebarItem">Home</li></NavLink>
         <NavLink to="/profile"><li className="sidebarItem">Stats</li></NavLink>
         <NavLink to="/scoreboard"><li className="sidebarItem">Scoreboard</li></NavLink>      
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={this.handleLogoutClick}>Logout</button>
           </>
         ) : (
             <>
@@ -27,3 +32,5 @@ export default class SideBar extends Component {
     )
   }
 }
+
+export default withRouter(SideBar);
