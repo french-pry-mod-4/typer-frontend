@@ -228,12 +228,20 @@ th, td {
   color: white;
 }
 
+.profile-header-wrapper {
+  /* background-image: url('./assets/wallpaper.jpg'); */
+  /* background-size: cover;
+  background-position: center; */
+  background-image: linear-gradient(to right bottom, #541388, #44228a, #332b8b, #20328a, #023788);
+  height: 30%;
+}
+
 .profile-header {
+  backdrop-filter: blur(7px);
   box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
-  background-image: linear-gradient(to right bottom, #f9c80e, #fdb200, #ff9c00, #ff8500, #ff6c11);
   border-radius: 5px;
   width: 100%;
-  height: 30%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -243,7 +251,7 @@ th, td {
   text-align: center;
   margin: 0;
   text-transform: uppercase;
-  font-family: 'Outrun Future';
+  font-family: 'VCR Mono';
   color: #fff;
   text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
 }
@@ -251,12 +259,17 @@ th, td {
 .profile-userStats {
   display: flex;
   flex-direction: row;
-  border: 1px solid red;
   justify-content: space-around;
 }
 
 .statsDataContainer > h2 {
-  font-family: 'Outrun Future';
+  font-family: 'VCR Mono';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+}
+
+.statsDataContainer > h3 {
+  font-family: 'VCR Mono';
   color: #fff;
   text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
 }
@@ -272,11 +285,15 @@ th, td {
   width: 100%;
   border: 1px solid red;
   border-radius: 5px;
+  background-image: linear-gradient(to right bottom, #541388, #44228a, #332b8b, #20328a, #023788);
 }
 
 .table-container {
   border: 1px solid white;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
+  border: none;
+  border-collapse: collapse;
 }
 
 th {
@@ -285,6 +302,17 @@ th {
   text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
 }
 
-td {
+.tableRow-data {
+  height: 20px;
+  width: 100%;
   background-image: linear-gradient(to right bottom, #f9c80e, #fdb200, #ff9c00, #ff8500, #ff6c11);
+  /* margin: 5px auto; */
+}
+
+td {
+  border-radius: 5px;
+  border: none;
+  font-family: 'VCR Mono';
+  color: #fff;
+  /* background-image: linear-gradient(to right bottom, #f9c80e, #fdb200, #ff9c00, #ff8500, #ff6c11); */
 }
