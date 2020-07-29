@@ -13,6 +13,11 @@
   src: url('./assets/fonts/Outrun-future.otf');
 }
 
+@font-face {
+  font-family: 'VCR Mono';
+  src: url('./assets/fonts/vcr-mono.ttf');
+}
+
 
 .App {
   text-align: center;
@@ -137,7 +142,7 @@ nav > * {
 
 .content {
   width: 60%;
-  height: 90vh;
+  height: 80vh;
   margin: 0 auto;
   /* padding: 50px 0; */
   /* display: grid; */
@@ -178,27 +183,26 @@ nav > * {
 }
 
 .tileCard {
-  /* border: 1px solid red; */
   height: 95%;
   text-align: center;
   display: grid;
   place-items: center;
-  /* vertical-align: baseline; */
   width: 95%;
   color: #fff;
   font-size: 1.1em;
   text-shadow: 1px 1px 2px #FF6C11, 0 0 25px #FF6C11, 0 0 5px #FF6C11;
-  /* want to find another font to work for this */
-  font-family: 'Orbitron';
+  font-family: 'VCR Mono';
 }
 
 
 .green{
-  background-color: green
+  text-shadow: 1px 1px 2px #CFFF04, 0 0 25px #CFFF04, 0 0 5px #CFFF04;
+  color: #fff;
 }
 
 .red{
-  background-color: red
+  text-shadow: 1px 1px 2px #FD1d53, 0 0 25px #FD1d53, 0 0 5px #FD1d53;
+  color: #fff;
 }
 
 .filterWrapper {
@@ -223,19 +227,101 @@ th, td {
   color: white;
 }
 
+.profile-header-wrapper {
+  /* background-image: url('./assets/wallpaper.jpg'); */
+  /* background-size: cover;
+  background-position: center; */
+  background-image: linear-gradient(to right bottom, #541388, #44228a, #332b8b, #20328a, #023788);
+  height: 30%;
+}
+
 .profile-header {
-  background-image: url('./assets/palmtrees.jpg');
-  background-size: cover;
-  background-position: center;
+  backdrop-filter: blur(7px);
+  box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
   border-radius: 5px;
   width: 100%;
-  height: 20%;
-  border: 1px solid red;
-  background-color:
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-userName {
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  font-family: 'VCR Mono';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
 }
 
 .profile-userStats {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+}
+
+.statsDataContainer > h2 {
+  font-family: 'VCR Mono';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+}
+
+.statsDataContainer > h3 {
+  font-family: 'VCR Mono';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+}
+
+.gameboardContainer {
+  color: #fff;
+  background-color: #241734;
+  padding: 2vh 2vw;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
+}
+
+.passageText {
+  font-family: 'VCR Mono';
+  line-height: 20px;
+}
+
+.profile-scores {
+  margin-top: 5vh;
+  height: 70%;
+  width: 100%;
   border: 1px solid red;
+  border-radius: 5px;
+  background-image: linear-gradient(to right bottom, #541388, #44228a, #332b8b, #20328a, #023788);
+}
+
+.table-container {
+  border: 1px solid white;
+  width: 90%;
+  margin: 0 auto;
+  border: none;
+  border-collapse: collapse;
+}
+
+th {
+  font-family: 'Outrun Future';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+}
+
+.tableRow-data {
+  height: 20px;
+  width: 100%;
+  background-image: linear-gradient(to right bottom, #f9c80e, #fdb200, #ff9c00, #ff8500, #ff6c11);
+  /* margin: 5px auto; */
+}
+
+td {
+  border-radius: 5px;
+  border: none;
+  font-family: 'VCR Mono';
+  color: #fff;
+  /* background-image: linear-gradient(to right bottom, #f9c80e, #fdb200, #ff9c00, #ff8500, #ff6c11); */
 }

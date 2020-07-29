@@ -3,7 +3,7 @@ import Stopwatch from './Stopwatch'
 
 export default class GameBoard extends Component{
 
-  
+
 
 // was originally using variables in componentDidUpdate, but switched it to state...
   state = {
@@ -11,7 +11,7 @@ export default class GameBoard extends Component{
     typingInput: "",
     // length: 0,
     // lastLetter: "",
-    incorrect: 0, 
+    incorrect: 0,
     gameStatus: null
   }
 
@@ -52,7 +52,7 @@ export default class GameBoard extends Component{
   }
 
   componentDidUpdate(prevProps, prevState){
-    
+
     // only if user types something
     if (prevState.typingInput !== this.state.typingInput){
 
@@ -90,7 +90,7 @@ export default class GameBoard extends Component{
 
   updateScores(speed, accuracy){
     const scoreInfo = {
-      speed, 
+      speed,
       accuracy
     }
     console.log(scoreInfo)
@@ -102,7 +102,7 @@ export default class GameBoard extends Component{
       body: JSON.stringify(scoreInfo)
     })
     .then(r => r.json())
-    .then(console.log)  
+    .then(console.log)
   }
 
   calculateAccuracy = () => {
@@ -140,34 +140,36 @@ export default class GameBoard extends Component{
 // showTimeAllotted = () => {
 //   return this.state.game.passage.time_allotted
 // }
-  
+
 
   render(){
     // console.log("props", this.props)
     const time = this.state.game ? this.state.game.passage.time_allotted : "test"
     // console.log("time" , time)
     return (
-      <div style={{color:"white"}}>
-        <Stopwatch 
-          timeAllotted={this.state.game ? this.state.game.passage.time_allotted : null}
-          gameStatus={this.state.gameStatus} handleGameOver={this.handleGameOver}/>
-        <h4>Incorrect: {this.state.incorrect}</h4>
-        {/* If you don't want the incorrect to show up until the game begins, see below (currently commenteed out): */}
-        {/* {this.state.gameStatus ?
-          <h4>Incorrect: {this.state.incorrect}</h4> : null } */}
-        {this.state.gameStatus === "over" ? 
-        <div>
-          <h4>Speed (WPM): {this.calculateSpeed()}</h4>
-          <h4>Accuracy: {this.calculateAccuracy()}%</h4>
-        </div>  : null}
-        <p>{this.state.game ? this.renderViewText() : "loading..."}</p>
+      <div className="content">
+        <div className="gameboardContainer">
+          <Stopwatch
+            timeAllotted={this.state.game ? this.state.game.passage.time_allotted : null}
+            gameStatus={this.state.gameStatus} handleGameOver={this.handleGameOver}/>
+          <h4>Incorrect: {this.state.incorrect}</h4>
+          {/* If you don't want the incorrect to show up until the game begins, see below (currently commenteed out): */}
+          {/* {this.state.gameStatus ?
+            <h4>Incorrect: {this.state.incorrect}</h4> : null } */}
+          {this.state.gameStatus === "over" ?
+          <div>
+            <h4>Speed (WPM): {this.calculateSpeed()}</h4>
+            <h4>Accuracy: {this.calculateAccuracy()}%</h4>
+          </div>  : null}
+          <p className="passageText">{this.state.game ? this.renderViewText() : "loading..."}</p>
 
-        <textarea name="typingInput" 
-          placeholder={"begin typing here"} 
-          value={this.state.typingInput} 
-          onChange={this.handleTyping}
-          disabled={this.state.gameStatus === "over"} // not sure how we want to set it up 
-        />
+          <textarea name="typingInput"
+            placeholder={"begin typing here"}
+            value={this.state.typingInput}
+            onChange={this.handleTyping}
+            disabled={this.state.gameStatus === "over"} // not sure how we want to set it up
+          />
+        </div>
       </div>
     )
   }
