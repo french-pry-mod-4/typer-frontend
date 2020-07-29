@@ -66,3 +66,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+# Credits:
+https://www.deviantart.com/spektulumos/art/Outrun-Colour-Palette-754508731
+https://www.deviantart.com/glitchmaster7/art/Transparent-80-s-Neon-Grid-658235467

@@ -1,38 +1,327 @@
+@font-face {
+  font-family: 'Delta Ray Compact';
+  src: url('./assets/fonts/deltaraycompact.ttf');
+}
+
+@font-face {
+  font-family: 'Delta Ray Gradital';
+  src: url('./assets/fonts/deltaraygradital.otf');
+}
+
+@font-face {
+  font-family: 'Outrun Future';
+  src: url('./assets/fonts/Outrun-future.otf');
+}
+
+@font-face {
+  font-family: 'VCR Mono';
+  src: url('./assets/fonts/vcr-mono.ttf');
+}
+
+
 .App {
   text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #241734;
+  /* #A8EB12 */
+  background-image: url('./assets/magenta-grid.png');
+  background-image: url('./assets/magenta-grid.png'), linear-gradient(to bottom, #241734, #1e132f, #180f2a, #130926, #0d0221);
+  display: grid;
+  place-items: center;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 110%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+main {
+  height: 100vh;
+  width: 100vw;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.logoContainer {
+  height: 300px;
+  position: relative;
+  background-image: url('./assets/vapor-sun.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: grid;
+  place-items: center;
+}
+
+.text-wrapper {
+  /* border: 1px solid red; */
+  width: 300px;
+  position: relative;
+}
+
+.logoText-type {
+  font-family: 'Delta Ray Gradital';
+  background: linear-gradient(to bottom, #ebf1f6 0%,#abd3ee 50%,#859ee2 51%,#d5ebfb 100%);
+  -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+  font-size: 100px;
+   position: relative;
+   padding: 0;
+  height: fit-content;
+  margin-block-start: 0em;
+  z-index: 21;
+}
+
+.logoText-type::after {
+  content: "typ3";
+  position: absolute;
+  /* z-index: -1; */
+  left: 0;
+  text-shadow: 1px -1px 0 rgba(255,255,255,0.5),
+        3px 1px 3px rgba(255,0,255,0.85),
+        -3px -2px 3px rgba(0,0,255,0.85),
+        1px -2px 0 rgba(255,255,255,0.8);
+  font-size: 100px;
+}
+
+.logoText-out {
+  font-family: 'Outrun Future';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+  font-size: 80px;
+  line-height: 0;
+  position: absolute;
+  top: 30px;
+  right: 5px;
+  /* z-index: -1; */
+}
+
+nav {
+  backdrop-filter: blur(10px);
+  background-image: url('./assets/skyline.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20vw;
+  margin: 0 2vw;
+  height: 90vh;
+  position: relative;
+  border-radius: 15px;
+  border: 5px solid rgb(253,55,119);
+  box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
+}
+
+nav > * {
+  text-decoration: none;
+}
+
+.sidebarItem {
+  list-style-type: none;
+  backdrop-filter: blur(35px);
+  width: 80%;
+  border-radius: 5px;
+  font-weight: 800;
+  height: 7vh;
+  margin: 5vh auto;
+  font-size: 1.5em;
+  line-height: 7vh;
+  -webkit-box-shadow: 0px 0px 10px 6px rgba(16,215,174, 0.7);
+  border: 2px solid rgb(16,215,174);
+  box-shadow: 0px 0px 10px 6px rgba(16,215,174, 0.7);
+  font-family: 'Outrun Future';
+  text-shadow: 1px 1px 2px #650d89, 0 0 15px #fd1d53, 0 0 5px #fd3777;
+  color: #fff;
+}
+
+.sidebarItem:hover {
+  transform: scale(1.05);
+  -webkit-box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1);
+  box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1);
+  text-shadow: 1px 1px 2px #650d89, 0 0 30px #fd1d53, 0 0 5px #fd3777;
+  transition: .75s;
+}
+
+.content {
+  width: 60%;
+  height: 80vh;
+  margin: 0 auto;
+  /* padding: 50px 0; */
+  /* display: grid; */
+  /* place-items: center; */
+}
+
+.tileWrapper {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 5vh 5vw;
+  overflow-y: scroll;
+}
+
+.tileCardWrapper {
+  backdrop-filter: blur(15px) contrast(.8);
+  border: 3px solid #A8EB12;
+  box-shadow: 0px 0px 10px 6px rgba(168, 235, 18,0.7);
+  width: 12vw;
+  padding: 15px;
+  height: 10vh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  margin: 10px;
+  border-radius: 5px;
+  position: relative;
+  /* border: 1px solid red; */
+}
+
+.tileCardWrapper:hover {
+  transition: 1s;
+  transform: scale(1.05);
+  border: 3px solid #A8EB12;
+  box-shadow: 0px 0px 10px 6px rgba(168, 235, 18,0.7);
+}
+
+.tileCard {
+  height: 95%;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  width: 95%;
+  color: #fff;
+  font-size: 1.1em;
+  text-shadow: 1px 1px 2px #FF6C11, 0 0 25px #FF6C11, 0 0 5px #FF6C11;
+  font-family: 'VCR Mono';
+}
+
+
+.green{
+  text-shadow: 1px 1px 2px #CFFF04, 0 0 25px #CFFF04, 0 0 5px #CFFF04;
+  color: #fff;
+}
+
+.red{
+  text-shadow: 1px 1px 2px #FD1d53, 0 0 25px #FD1d53, 0 0 5px #FD1d53;
+  color: #fff;
+}
+
+.filterWrapper {
+  height: 5vh;
+  margin: 20px auto;
+}
+
+.searchBar {
+  font-size: 1.2em;
+  height: 4vh;
+  color: red;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 3px solid #F9c80e;
+  filter: drop-shadow(0 10px 1rem rgba(249, 200, 14,0.7));
+  width: 35vw;
+}
+
+th, td {
+  padding: 10px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.profile-header-wrapper {
+  /* background-image: url('./assets/wallpaper.jpg'); */
+  /* background-size: cover;
+  background-position: center; */
+  background-image: linear-gradient(to right bottom, #541388, #44228a, #332b8b, #20328a, #023788);
+  height: 30%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.profile-header {
+  backdrop-filter: blur(7px);
+  box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-userName {
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  font-family: 'VCR Mono';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+}
+
+.profile-userStats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.statsDataContainer > h2 {
+  font-family: 'VCR Mono';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+}
+
+.statsDataContainer > h3 {
+  font-family: 'VCR Mono';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+}
+
+.gameboardContainer {
+  color: #fff;
+  background-color: #241734;
+  padding: 2vh 2vw;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
+}
+
+.passageText {
+  font-family: 'VCR Mono';
+  line-height: 20px;
+}
+
+.profile-scores {
+  margin-top: 5vh;
+  height: 70%;
+  width: 100%;
+  border: 1px solid red;
+  border-radius: 5px;
+  background-image: linear-gradient(to right bottom, #541388, #44228a, #332b8b, #20328a, #023788);
+}
+
+.table-container {
+  border: 1px solid white;
+  width: 90%;
+  margin: 0 auto;
+  border: none;
+  border-collapse: collapse;
+}
+
+th {
+  font-family: 'Outrun Future';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+}
+
+.tableRow-data {
+  height: 20px;
+  width: 100%;
+  background-image: linear-gradient(to right bottom, #f9c80e, #fdb200, #ff9c00, #ff8500, #ff6c11);
+  /* margin: 5px auto; */
+}
+
+td {
+  border-radius: 5px;
+  border: none;
+  font-family: 'VCR Mono';
+  color: #fff;
+  /* background-image: linear-gradient(to right bottom, #f9c80e, #fdb200, #ff9c00, #ff8500, #ff6c11); */
 }
