@@ -19,13 +19,6 @@ export default class Profile extends Component {
     })
   }
 
-  componentDidUpdate(prevProps, prevState) {
-      if (prevState.games !== this.state.games) {
-        fetch('http://localhost:3000/users/1')
-        .then(users => console.log(users))
-      }
-    }
-
   handleDelete = (id) => {
     fetch(`http://localhost:3000/games/${id}`, {
       method: 'DELETE',
@@ -33,8 +26,19 @@ export default class Profile extends Component {
         "Content-Type": "application/json"
       }
     })
-  console.log('deleted')
+    .then(r => r.json())
+    .then(response => {
+      console.log(response)
+
+      const updatedGames = this.state.games.filter(game => game.id !== id)
+      this.setState({
+        games: updatedGames
+      })
+      
+    })
   }
+
+
 
   render() {
     const calcWPM = this.state.games.reduce((total, game) => total + game.speed, 0)
