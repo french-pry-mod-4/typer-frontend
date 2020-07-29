@@ -10,21 +10,29 @@ const Login = (props) => {
   const { username, password } = loginInput;
 
   const handleSubmit = (e) => {
-    // e.preventDefault()
+    e.preventDefault()
+
+    
     // console.log(loginInput)
   
-    // fetch("http://localhost:3000/users/", {
-    //   method: "POST", 
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   // body: JSON.stringify({loginInput})
-    //   body: JSON.stringify({username, password})
-    // })
-    // .then(r => r.json())
-    // .then(newUser => {
-    //   props.handleLogIn(newUser)
-    // })
+    fetch("http://localhost:3000/login", {
+      method: "POST",
+      credentials: "include", 
+      headers: {
+        "Content-Type": "application/json"
+      },
+      // body: JSON.stringify({loginInput})
+      body: JSON.stringify({username, password})
+    })
+    .then(r => r.json())
+    .then(user => {
+      console.log("user", user)
+      // if login was successful
+      if (user.username){
+        props.handleLogIn(user)
+      }
+      // props.handleLogIn(user)
+    })
   }
 
   const handleChange = (e) => {

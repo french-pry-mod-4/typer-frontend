@@ -34,7 +34,8 @@ const SignUp = (props) => {
     console.log(signUpInput)
   
     fetch("http://localhost:3000/users", {
-      method: "POST", 
+      method: "POST",
+      credentials: "include", 
       headers: {
         "Content-Type": "application/json"
       },
@@ -44,12 +45,12 @@ const SignUp = (props) => {
     .then(r => r.json())
     .then(newUser => {
       console.log(newUser)
-      if (newUser.id){
+      // if (newUser.id){
         props.handleLogIn(newUser)
-      }
-      else {
-        setErrors(newUser)
-      }
+      // }
+      // else {
+      //   setErrors(newUser)
+      // }
     })
   }
 
@@ -57,13 +58,15 @@ const SignUp = (props) => {
     setSignUpInput({...signUpInput, [e.target.name]: e.target.value})
   }
 
-  const renderErrors = () => {
-    return errors.map(error => <><h3 style={{color:"red"}}>{error}</h3></>)
-  }
+//   const renderErrors = () => {
+//     if (errors){
+//     return errors.map(error => <><h3 style={{color:"red"}}>{error}</h3></>)
+//   }
+// }
 
   return(
     <>
-      {errors && renderErrors()}
+      {/* {errors && renderErrors()} */}
       <form onChange={handleChange} onSubmit={handleSubmit}>
         <input type="text" name="username" value={username} />
         <input type="password" name="password" value={password}/>

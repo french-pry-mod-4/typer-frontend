@@ -16,26 +16,65 @@ import {
 export default class Main extends Component {
 
   state = {
-    user: {}
+    currentUser: null
   }
 
-  handleLogin = (user) => {
-    this.setState({user})
+  //log in user when component mounts
+  componentDidMount(){
+    fetch("http://localhost:3000/autologin", {
+      credentials: "include" // tells browser to send cookies with fetch req
+    })
+    .then(r => {
+      if (r.ok) {
+        return r.json()
+      }
+      else{
+        throw Error("Not logged in!")
+      }
+    })
+    .then(user => {
+      this.handleLogin(user)
+    })
+    .catch((err) => console.error(err))
   }
+
+  handleLogin = (currentUser) => {
+    this.setState({currentUser}, () => {
+      // this.props.history.push("/home")
+    })
+  }
+
+  handleLogout = () => {
+    fetch("http://localhost:3000/logout", {
+      credentials: "include" 
+    })
+    .then(r => r.json())
+    .then(() => { 
+      this.setState({currentUser: null}, () => {
+        // this.props.history.push("/")
+      })
+    })
+  }
+
   render () {
+    console.log("in main, state:", this.state)
     return (
       <BrowserRouter>
+        <h3 style={{color:"white"}}>{this.state.currentUser ? `Hi, ${this.state.currentUser.username}`: "Please login"}</h3>
         <main>
-          <SideBar />
+          <SideBar currentUser={this.state.currentUser} handleLogout={this.handleLogout}/>
           <Switch>
-            
 
             <Route exact path="/" render={routeProps => (
               <Home {...routeProps}
-                user={this.state.user}
+                currentUser={this.state.currentUser}
               />  
               )}/>
-            <Route path="/login" component={Login} />
+            <Route path="/login" render={() => (
+              <Login
+                handleLogIn={this.handleLogin}
+              /> 
+            )}/>
             <Route path="/signup" render={() => (
               <SignUp
                 handleLogIn={this.handleLogin}

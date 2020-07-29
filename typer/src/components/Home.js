@@ -39,6 +39,7 @@ export default class Home extends Component {
     }
     fetch("http://localhost:3000/games", {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },
