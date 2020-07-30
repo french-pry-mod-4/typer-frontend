@@ -31,30 +31,36 @@ export default class Home extends Component {
   }
 
   handleNewGame = (id) => {
-    console.log(id)
-    const postBody = {
-      speed: 0,
-      accuracy: 0,
-      passage_id: id
+
+    if (!this.props.currentuser){ // not logged in
+      this.props.history.push("/login")
     }
-    fetch("http://localhost:3000/games", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(postBody)
-    })
-    .then(r => r.json())
-    .then(newGame => {
-      console.log(newGame)
+    else{
+      console.log(id)
+      const postBody = {
+        speed: 0,
+        accuracy: 0,
+        passage_id: id
+      }
+      fetch("http://localhost:3000/games", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(postBody)
+      })
+      .then(r => r.json())
+      .then(newGame => {
+        console.log(newGame)
 
-      console.log(newGame.passage.text)
-      this.setState({game:newGame})
-      // want to display the gameBoard now
+        console.log(newGame.passage.text)
+        this.setState({game:newGame})
+        // want to display the gameBoard now
 
-      this.props.history.push(`/games/${newGame.id}`)
-    })
+        this.props.history.push(`/games/${newGame.id}`)
+      })
+    }
   }
 
   searchInput = React.createRef()
