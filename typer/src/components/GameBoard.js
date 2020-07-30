@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Stopwatch from './Stopwatch'
+import Odometer from 'react-odometerjs'
+import 'odometer/themes/odometer-theme-default.css'
 
 export default class GameBoard extends Component{
 
@@ -27,7 +29,7 @@ export default class GameBoard extends Component{
   }
 
   componentWillUnmount(){
-    if (!this.state.game.speed){ // speed is null(game wasn't completed) or 0  
+    if (!this.state.game.speed){ // speed is null(game wasn't completed) or 0
       fetch(`http://localhost:3000/games/${this.id}`, {
         method: 'DELETE',
         credentials: "include",
@@ -161,31 +163,57 @@ export default class GameBoard extends Component{
 
   render(){
     // console.log("props", this.props)
-    const time = this.state.game ? this.state.game.passage.time_allotted : "test"
+    // const time = this.state.game ? this.state.game.passage.time_allotted : "test"
     // console.log("time" , time)
     return (
       <div className="content">
         <div className="gameboardContainer">
-          <Stopwatch
-            timeAllotted={this.state.game ? this.state.game.passage.time_allotted : null}
-            gameStatus={this.state.gameStatus} handleGameOver={this.handleGameOver}/>
-          <h4>Incorrect: {this.state.incorrect}</h4>
-          {/* If you don't want the incorrect to show up until the game begins, see below (currently commenteed out): */}
-          {/* {this.state.gameStatus ?
-            <h4>Incorrect: {this.state.incorrect}</h4> : null } */}
-          {this.state.gameStatus === "over" ?
-          <div>
-            <h4>Speed (WPM): {this.calculateSpeed()}</h4>
-            <h4>Accuracy: {this.calculateAccuracy()}%</h4>
-          </div>  : null}
-          <p className="passageText">{this.state.game ? this.renderViewText() : "loading..."}</p>
+          <div className="gameBoardBG">
+            <div className="gameDetailsContainer">
+                <Stopwatch
+                  timeAllotted={this.state.game ? this.state.game.passage.time_allotted : null}
+                  gameStatus={this.state.gameStatus} handleGameOver={this.handleGameOver}/>
+                <div className="errorsContainer">
+                  <h3 className="gameDetails">Errors</h3>
+                  <Odometer
+                    value={this.state.incorrect}
+                    className="odometerVals"
+                    format="(.ddd),dd" />
+                </div>
 
-          <textarea name="typingInput"
-            placeholder={"begin typing here"}
-            value={this.state.typingInput}
-            onChange={this.handleTyping}
-            disabled={this.state.gameStatus === "over"} // not sure how we want to set it up
-          />
+              {/* If you don't want the incorrect to show up until the game begins, see below (currently commenteed out): */}
+              {/* {this.state.gameStatus ?
+                <h4>Incorrect: {this.state.incorrect}</h4> : null } */}
+              {this.state.gameStatus === "over" ?
+              <div>
+                <div className="speedContainer">
+                  <h4 className="gameDetails">WPM</h4>
+                  <Odometer
+                    value={this.calculateSpeed()}
+                    className="odometerVals"
+                    format="(.ddd),dd" />
+                </div>
+                <div className="accuracyContainer">
+                  <h4 className="gameDetails">Accuracy {this.calculateAccuracy()}%</h4>
+                </div>
+              </div>  : null}
+            </div>
+            <div className="passageTextContainer">
+              <p className="passageText">{this.state.game ? this.renderViewText() : "loading..."}</p>
+            </div>
+
+            <div className="passageInputContainer">
+              <textarea
+                className="passageInput"
+                name="typingInput"
+                spellcheck="false"
+                // placeholder={"begin typing here"}
+                value={this.state.typingInput}
+                onChange={this.handleTyping}
+                disabled={this.state.gameStatus === "over"} // not sure how we want to set it up
+              />
+            </div>
+          </div>
         </div>
       </div>
     )

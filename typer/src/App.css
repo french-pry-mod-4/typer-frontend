@@ -42,66 +42,23 @@ main {
 }
 
 .logoContainer {
-  height: 300px;
-  position: relative;
-  background-image: url('./assets/vapor-sun.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: grid;
-  place-items: center;
+  height: 325px;
+  width: 100%;
 }
 
-.text-wrapper {
-  /* border: 1px solid red; */
-  width: 300px;
-  position: relative;
-}
-
-.logoText-type {
-  font-family: 'Delta Ray Gradital';
-  background: linear-gradient(to bottom, #ebf1f6 0%,#abd3ee 50%,#859ee2 51%,#d5ebfb 100%);
-  -webkit-background-clip: text;
-   -webkit-text-fill-color: transparent;
-  font-size: 100px;
-   position: relative;
-   padding: 0;
-  height: fit-content;
-  margin-block-start: 0em;
-  z-index: 21;
-}
-
-.logoText-type::after {
-  content: "typ3";
-  position: absolute;
-  /* z-index: -1; */
-  left: 0;
-  text-shadow: 1px -1px 0 rgba(255,255,255,0.5),
-        3px 1px 3px rgba(255,0,255,0.85),
-        -3px -2px 3px rgba(0,0,255,0.85),
-        1px -2px 0 rgba(255,255,255,0.8);
-  font-size: 100px;
-}
-
-.logoText-out {
-  font-family: 'Outrun Future';
-  color: #fff;
-  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
-  font-size: 80px;
-  line-height: 0;
-  position: absolute;
-  top: 30px;
-  right: 5px;
-  /* z-index: -1; */
+.logoContainer > img {
+  height: 100%;
+  padding: 5px;
+  width: 100%;
 }
 
 nav {
   backdrop-filter: blur(10px);
-  background-image: url('./assets/skyline.jpg');
+  background-image: url('https://i.imgur.com/KCwAMdz_d.webp?maxwidth=728&fidelity=grand');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  width: 20vw;
+  background-position: center center;
+  width: 22vw;
   margin: 0 2vw;
   height: 90vh;
   position: relative;
@@ -116,7 +73,7 @@ nav > * {
 
 .sidebarItem {
   list-style-type: none;
-  backdrop-filter: blur(35px);
+  backdrop-filter: blur(15px);
   width: 80%;
   border-radius: 5px;
   font-weight: 800;
@@ -135,7 +92,11 @@ nav > * {
 .sidebarItem:hover {
   transform: scale(1.05);
   -webkit-box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1);
-  box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1);
+  box-shadow: 0 0 5px rgba(16,215,174, 1),
+              0 0 25px rgba(16,215,174, 1),
+              0 0 40px rgba(16,215,174, 1),
+              0 0 70px rgba(16,215,174, 1);
+  /* box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1); */
   text-shadow: 1px 1px 2px #650d89, 0 0 30px #fd1d53, 0 0 5px #fd3777;
   transition: .75s;
 }
@@ -145,8 +106,9 @@ nav > * {
   height: 80vh;
   margin: 0 auto;
   /* padding: 50px 0; */
-  /* display: grid; */
-  /* place-items: center; */
+  display: grid;
+  place-items: center;
+  /* border: 1px solid red; */
 }
 
 .tileWrapper {
@@ -160,10 +122,12 @@ nav > * {
 }
 
 .tileCardWrapper {
-  backdrop-filter: blur(15px) contrast(.8);
+
   border: 3px solid #A8EB12;
   box-shadow: 0px 0px 10px 6px rgba(168, 235, 18,0.7);
   width: 12vw;
+  background-image: url('./assets/waves.gif');
+  background-size: cover;
   padding: 15px;
   height: 10vh;
   overflow: hidden;
@@ -183,6 +147,7 @@ nav > * {
 }
 
 .tileCard {
+  backdrop-filter: blur(15px) contrast(.8);
   height: 95%;
   text-align: center;
   display: grid;
@@ -274,18 +239,77 @@ th, td {
 }
 
 .gameboardContainer {
-  color: #fff;
-  background-color: #241734;
-  padding: 2vh 2vw;
+  /* color: rgba(256, 256, 256, 0.5); */
+  /* padding: 2vh 2vw; */
   height: 100%;
   width: 100%;
   border-radius: 15px;
+  position: relative;
   box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
+  /* background-color: red; */
+  background-image: url('https://thumbs.gfycat.com/AggravatingEmbellishedArkshell-poster.jpg');
+
+}
+
+.gameBoardBG {
+  height: 100%;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.passageInputContainer {
+  position: absolute;
+  width: 95%;
+  top: 10vh;
+  height: 56vh;
 }
 
 .passageText {
+  color: rgba(256, 256, 256, 0.5);
   font-family: 'VCR Mono';
   line-height: 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.passageInput {
+  /* border: 1px solid red; */
+  height: 100%;
+  margin: 0 auto;
+  width: 90%;
+  line-height: 20px;
+  background-color: transparent;
+  font-family: 'VCR Mono';
+  color: transparent;
+  outline: none;
+  border: none;
+  resize: none;
+}
+
+.gameDetailsContainer {
+  display: flex;
+  width: 60%;
+  margin: 0 auto;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.gameDetails {
+  font-family: 'Outrun Future';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+  margin: 0;
+}
+
+.odometer.odometer-auto-theme, .odometer.odometer-theme-default {
+  color: #fff;
+  font-family: 'VCR Mono';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+  font-size: 1.4em;
 }
 
 .profile-scores {
@@ -323,5 +347,126 @@ td {
   border: none;
   font-family: 'VCR Mono';
   color: #fff;
-  /* background-image: linear-gradient(to right bottom, #f9c80e, #fdb200, #ff9c00, #ff8500, #ff6c11); */
+}
+
+.credentialContainer {
+  width: 50vw;
+  height: fit-content;
+  /* padding: 5em 0; */
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 6px rgba(3, 233, 244,0.7);
+  background-image: url('https://www.lefthudson.com/wp-content/uploads/2019/11/retro-neon-background-fresh-synthwave-wallpaper-wallpapersafari-this-month-of-retro-neon-background.jpg');
+  background-size: cover;
+  /* backdrop-filter: blur(10px); */
+}
+
+.credentialContainerInner {
+  height: 100%;
+  width: 100%;
+  padding: 5em 0;
+  backdrop-filter: blur(7px);
+  border-radius: 15px;
+}
+
+.credentialContainerInner > * {
+  margin: 0 auto;
+}
+
+.credentialContainerInner > h1 {
+  font-family: 'VCR Mono';
+  color: #fff;
+  text-shadow: 1px 1px 20px rgb(3, 233,244), 0 0 25px rgb(3, 233,244), 0 0 rgb(3, 233,244);
+}
+
+.credentialContainerInner > form {
+  display: flex;
+  width: 40vw;
+  height: fit-content;
+  flex-direction: column;
+}
+
+.credentialInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid rgba(3, 233, 244);
+  filter: drop-shadow(0px 10px 1em rgba(3, 233, 244,0.7));
+  /* border-radius: 10px; */
+  margin: 2vh 0;
+  font-size: 1.15em;
+  padding-left: 1vw;
+  outline: none;
+  height: 5vh;
+  font-family: 'VCR Mono';
+  backdrop-filter: blur(7px);
+  color: #fff;
+  line-height: 5vh;
+}
+
+.credentialInput::placeholder {
+  color: #fff;
+}
+
+.credentialSubmit {
+  background-color: #03e9f4;
+  height: 5vh;
+  font-family: 'VCR Mono';
+  text-transform: uppercase;
+  font-size: 1.2em;
+  color: #fff;
+  border: 2px solid rgba(3, 233, 244);
+  width: 100%;
+  margin: 2vh auto 0;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 1s;
+
+  box-shadow: 0 0 1px #03e9f4,
+              0 0 5px #03e9f4,
+              0 0 7px #03e9f4,
+              0 0 10px #03e9f4;
+}
+
+.credentialSubmit:hover {
+  /* color: #000; */
+  transform: scale(1.01);
+  box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 40px #03e9f4,
+              0 0 70px #03e9f4;
+}
+
+/* Scoreboard Styling */
+.sb_content {
+  width: 60%;
+  height: 90vh;
+  margin: 0 auto;
+  /* padding: 50px 0; */
+  /* display: grid;
+  place-items: center; */
+  border: 1px solid red;
+}
+
+.leaderBoardHeader {
+  border: 1px solid red;
+
+  width: 100%;
+  /* height: fit-content; */
+}
+
+.leaderBoardHeaderInner {
+  height: 100%;
+  width: 100%;
+  height: 10vh;
+  backdrop-filter: blur(10px);
+}
+
+.leaderboardH1 {
+  height: 100%;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding: none;
+  margin: none;
 }

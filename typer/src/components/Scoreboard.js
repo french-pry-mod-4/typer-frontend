@@ -18,8 +18,12 @@ export default class Scoreboard extends Component {
 
   render() {
     return (
-      <div>
-        <h1>View the High Scores!</h1>
+      <div className="sb_content">
+        <div className="leaderBoardHeader">
+          <div className="leaderBoardHeaderInner">
+            <h1 className="leaderboardH1">Leaderboard</h1>
+          </div>
+        </div>
         <table className="table-container">
         <tr>
           <th>User</th>
