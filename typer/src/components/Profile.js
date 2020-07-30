@@ -16,7 +16,7 @@ export default class Profile extends Component {
     .then(r => r.json())
     .then(games => {
       console.log("games", games)
-      this.setState( 
+      this.setState(
         { games } )
     })
   }
@@ -43,10 +43,11 @@ export default class Profile extends Component {
     const calcWPM = this.state.games.reduce((total, game) => total + game.speed, 0)
     const calcAccuracy = this.state.games.reduce((total, game) => total + game.accuracy, 0)
     return (
-      <div className="content">
+      <div className="sb_content">
         <div className="profile-header-wrapper">
           <div className="profile-header">
-            <h1 className="profile-userName">{this.state.user}</h1>
+
+            {/* <h1 className="profile-userName">{this.state.user}</h1> */}
             <div className="profile-userStats">
               <div className="statsDataContainer">
                 <h2>Games</h2>
