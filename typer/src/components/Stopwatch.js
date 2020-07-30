@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import Odometer from 'react-odometerjs'
+import 'odometer/themes/odometer-theme-default.css'
 
 export default class Stopwatch extends Component{
-  
+
   state = {
     // isRunning: false,
     intervalID: null,
@@ -29,7 +31,7 @@ export default class Stopwatch extends Component{
         timeLeft: this.props.timeAllotted
       })
     }
-      
+
 
   }
 
@@ -62,11 +64,12 @@ export default class Stopwatch extends Component{
 
   }
 
-  
+
   render() {
     return (
       <div className="stopwatch">
-        <h3 className="stopwatch-time">Time Remaining: { this.state.timeLeft }</h3>
+        <h3 className="stopwatch-time">Time Remaining:</h3>
+        <Odometer value={this.state.timeLeft} format="(.ddd),dd" />
       </div>
     );
   }
