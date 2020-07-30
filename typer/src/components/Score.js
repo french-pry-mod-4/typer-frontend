@@ -4,13 +4,13 @@ export default class Score extends Component {
   render() {
     console.log(this.props)
     return (
-        <tr>
-          <td>{this.props.username}</td>
-          <td>{this.props.speed}</td>
-          <td>{this.props.accuracy}</td>
+        <div className="scoreStatsContainer">
+          <div className="scoreStats">{this.props.username}</div>
+          <div className="scoreStats">{this.props.speed}</div>
+          <div className="scoreStats">{this.props.accuracy}</div>
           {/* TODO put passage name instead */}
-          <td>{this.props.passage.name || this.props.passage.id}</td>
-        </tr>
+          <div className="scoreStats">{this.props.passage.name || this.props.passage.id}</div>
+        </div>
     )
   }
 }

@@ -25,12 +25,12 @@ export default class Scoreboard extends Component {
           </div>
         </div>
         <table className="table-container">
-        <tr>
-          <th>User</th>
-          <th>Speed</th>
-          <th>Accuracy</th>
-          <th>Passage</th>
-        </tr>
+        <div className="scoreStatsContainer">
+          <div className="scoreStats">User</div>
+          <div className="scoreStats">Speed</div>
+          <div className="scoreStats">Accuracy</div>
+          <div className="scoreStats">Passage</div>
+        </div>
 
         {this.state.highScores.map((gameScore) =>
             <Score
