@@ -31,8 +31,7 @@ export default class Home extends Component {
   }
 
   handleNewGame = (id) => {
-
-    if (!this.props.currentuser){ // not logged in
+    if (!this.props.currentUser){ // not logged in
       this.props.history.push("/login")
     }
     else{
