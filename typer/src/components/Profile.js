@@ -16,8 +16,12 @@ export default class Profile extends Component {
     .then(r => r.json())
     .then(games => {
       console.log("games", games)
+      // hacky way to make sure 'empty' games don't show up
+      // should really change them to be created only at the end, but hen we won't have update
+      const filteredGames = games.filter(game => game.speed)
+      console.log("filteredGames", filteredGames)
       this.setState( 
-        { games } )
+        { games: filteredGames } )
     })
   }
 
