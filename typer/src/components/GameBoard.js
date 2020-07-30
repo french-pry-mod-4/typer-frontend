@@ -22,10 +22,10 @@ export default class GameBoard extends Component{
     fetch(`http://localhost:3000/games/${this.id}`, {
       credentials: "include"
     })
-      .then(r => r.json())
-      .then(game => {
-        this.setState({ game })
-      })
+    .then(r => r.json())
+    .then(game => {
+      this.setState({ game })
+    })
   }
 
   componentWillUnmount(){
