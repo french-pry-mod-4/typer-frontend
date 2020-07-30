@@ -30,9 +30,13 @@ const SignUp = (props) => {
     .then(r => r.json())
     .then(newUser => {
       console.log(newUser)
-      // if (newUser.id){
+      if (newUser.messages){
+        setErrors(newUser.messages)
+      }
+      else{
         props.handleLogIn(newUser)
         props.history.push("/")
+      }
 
       // }
       // else {
@@ -45,15 +49,15 @@ const SignUp = (props) => {
     setSignUpInput({...signUpInput, [e.target.name]: e.target.value})
   }
 
-//   const renderErrors = () => {
-//     if (errors){
-//     return errors.map(error => <><h3 style={{color:"red"}}>{error}</h3></>)
-//   }
-// }
+  const renderErrors = () => {
+    if (errors){
+    return errors.map(error => <><h3 style={{color:"red"}}>{error}</h3></>)
+  }
+}
 
   return(
     <>
-      {/* {errors && renderErrors()} */}
+      {errors && renderErrors()}
       <div className="content">
         <div className="credentialContainer">
           <div className="credentialContainerInner">
