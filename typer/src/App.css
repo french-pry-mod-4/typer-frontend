@@ -73,7 +73,7 @@ nav > * {
 
 .sidebarItem {
   list-style-type: none;
-  backdrop-filter: blur(35px);
+  backdrop-filter: blur(15px);
   width: 80%;
   border-radius: 5px;
   font-weight: 800;
@@ -236,18 +236,45 @@ th, td {
 }
 
 .gameboardContainer {
-  color: #fff;
+  color: rgba(256, 256, 256, 0.5);
   background-color: #241734;
   padding: 2vh 2vw;
   height: 100%;
   width: 100%;
   border-radius: 15px;
+  position: relative;
   box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
+}
+
+.passageTextContainer {
+}
+
+.passageInputContainer {
+  position: absolute;
+  width: 95%;
+  top: 10vh;
+  height: 56vh;
 }
 
 .passageText {
   font-family: 'VCR Mono';
   line-height: 20px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.passageInput {
+  /* border: 1px solid red; */
+  height: 100%;
+  margin: 0 auto;
+  width: 90%;
+  line-height: 20px;
+  background-color: transparent;
+  font-family: 'VCR Mono';
+  color: transparent;
+  outline: none;
+  border: none;
+  resize: none;
 }
 
 .profile-scores {

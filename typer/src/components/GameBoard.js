@@ -27,7 +27,7 @@ export default class GameBoard extends Component{
   }
 
   componentWillUnmount(){
-    if (!this.state.game.speed){ // speed is null(game wasn't completed) or 0  
+    if (!this.state.game.speed){ // speed is null(game wasn't completed) or 0
       fetch(`http://localhost:3000/games/${this.id}`, {
         method: 'DELETE',
         credentials: "include",
@@ -178,14 +178,21 @@ export default class GameBoard extends Component{
             <h4>Speed (WPM): {this.calculateSpeed()}</h4>
             <h4>Accuracy: {this.calculateAccuracy()}%</h4>
           </div>  : null}
-          <p className="passageText">{this.state.game ? this.renderViewText() : "loading..."}</p>
+          <div className="passageTextContainer">
+            <p className="passageText">{this.state.game ? this.renderViewText() : "loading..."}</p>
+          </div>
 
-          <textarea name="typingInput"
-            placeholder={"begin typing here"}
-            value={this.state.typingInput}
-            onChange={this.handleTyping}
-            disabled={this.state.gameStatus === "over"} // not sure how we want to set it up
-          />
+          <div className="passageInputContainer">
+            <textarea
+              className="passageInput"
+              name="typingInput"
+              spellcheck="false"
+              // placeholder={"begin typing here"}
+              value={this.state.typingInput}
+              onChange={this.handleTyping}
+              disabled={this.state.gameStatus === "over"} // not sure how we want to set it up
+            />
+          </div>
         </div>
       </div>
     )
