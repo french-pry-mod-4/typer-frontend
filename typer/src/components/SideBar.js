@@ -20,7 +20,7 @@ class SideBar extends Component {
         <NavLink exact to="/"><li className="sidebarItem">Home</li></NavLink>
         <NavLink to="/profile"><li className="sidebarItem">Stats</li></NavLink>
         <NavLink to="/scoreboard"><li className="sidebarItem">Scoreboard</li></NavLink>
-            <li className="sidebarItem" onClick={this.handleLogoutClick}>Logout</li>
+        <li className="sidebarItem" onClick={this.handleLogoutClick}>Logout</li>
           </>
         ) : (
             <>
