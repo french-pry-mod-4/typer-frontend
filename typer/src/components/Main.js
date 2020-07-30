@@ -18,7 +18,8 @@ import {
 class Main extends Component {
 
   state = {
-    currentUser: null
+    currentUser: null,
+    message: null
   }
 
   //log in user when component mounts
@@ -41,8 +42,9 @@ class Main extends Component {
   }
 
   handleLogin = (currentUser) => {
-    this.setState({currentUser}, () => {
-      // this.props.history.push("/")
+    this.setState({
+      currentUser,
+      message: null
     })
   }
 
@@ -74,16 +76,22 @@ class Main extends Component {
                 message={this.state.message}
               />
               )}/>
-            <Route exact path="/login" render={() => (
+            {/* <Route exact path="/login" render={() => (
               <Login
                 handleLogIn={this.handleLogin}
               />
-            )}/>
-            <Route exact path="/signup" render={() => (
+            )}/> */}
+            <Route path="/login">
+            {this.state.currentUser ?  <Redirect to='/' /> : <Login handleLogIn={this.handleLogin} /> }
+          </Route>
+            {/* <Route exact path="/signup" render={() => (
               <SignUp
                 handleLogIn={this.handleLogin}
               />
-            )}/>
+            )}/> */}
+            <Route path="/signup">
+              {this.state.currentUser ?  <Redirect to='/' /> : <SignUp handleLogIn={this.handleLogin}/> }
+            </Route>
 
             <Route path="/profile">
               {this.state.currentUser ? <Profile currentUser={this.state.currentUser} /> : <Redirect to='/login' />}
