@@ -10,6 +10,8 @@ const Login = (props) => {
 
   const { username, password } = loginInput;
 
+  const [error, setError] = useState("")
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -31,9 +33,10 @@ const Login = (props) => {
       if (user.username){
         props.handleLogIn(user)
         props.history.push("/")
-
       }
-      // props.handleLogIn(user)
+      else{
+        setError(user.message)
+      }
     })
   }
 
@@ -41,9 +44,11 @@ const Login = (props) => {
     setloginInput({...loginInput, [e.target.name]: e.target.value})
   }
 
+  
+
   return(
     <>
-    {props.message ? <h3>{props.message}</h3> : null }
+    {error ? <h3 style={{color:"red"}}>{error}</h3> : null }
       <div className="content">
         <div className="credentialContainer">
           <div className="credentialContainerInner">
