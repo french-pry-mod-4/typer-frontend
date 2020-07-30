@@ -68,8 +68,11 @@ export default class Stopwatch extends Component{
   render() {
     return (
       <div className="stopwatch">
-        <h3 className="stopwatch-time">Time Remaining:</h3>
-        <Odometer value={this.state.timeLeft} format="(.ddd),dd" />
+        <h3 className="stopwatch-time gameDetails">Time</h3>
+        <Odometer
+          value={this.state.timeLeft}
+          className="odometerVals"
+          format="(.ddd),dd" />
       </div>
     );
   }
