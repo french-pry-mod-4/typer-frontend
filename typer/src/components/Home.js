@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Tile from './Tile'
+import { getPassages, createGame} from '../fetches'
 // import GameBoardContainer from './GameBoardContainer'
 
 export default class Home extends Component {
@@ -13,17 +14,10 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    // fetch('http://localhost:3000/users')
-    // .then(r => r.json())
-    // .then(users => {
-    //   this.setState({users})
-    // })
-
-    fetch('http://localhost:3000/passages')
-    .then(r => r.json())
-    .then(passages => {
-      this.setState({passages})
-    })
+    getPassages()
+      .then(passages => {
+        this.setState({passages})
+      })
   }
 
   handleLogin = () => {
@@ -36,29 +30,15 @@ export default class Home extends Component {
     }
     else{
       console.log(id)
-      const postBody = {
-        speed: 0,
-        accuracy: 0,
-        passage_id: id
-      }
-      fetch("http://localhost:3000/games", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(postBody)
-      })
-      .then(r => r.json())
-      .then(newGame => {
-        console.log(newGame)
+      
+      createGame(id)
+        .then(newGame => {
+          console.log(newGame)
 
-        console.log(newGame.passage.text)
-        this.setState({game:newGame})
-        // want to display the gameBoard now
-
-        this.props.history.push(`/games/${newGame.id}`)
-      })
+          this.setState({game:newGame})
+          // display the gameBoard now
+          this.props.history.push(`/games/${newGame.id}`)
+        })
     }
   }
 

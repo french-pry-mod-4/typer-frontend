@@ -6,6 +6,7 @@ import Scoreboard from './Scoreboard'
 import GameBoard from './GameBoard'
 import SignUp from './SignUp'
 import Login from './Login'
+import { autoLogin, logout } from '../fetches'
 
 import {
   BrowserRouter,
@@ -18,39 +19,28 @@ import {
 class Main extends Component {
 
   state = {
-    currentUser: null
+    currentUser: null,
+    message: null
   }
 
   //log in user when component mounts
   componentDidMount(){
-    fetch("http://localhost:3000/autologin", {
-      credentials: "include" // tells browser to send cookies with fetch req
-    })
-    .then(r => {
-      if (r.ok) {
-        return r.json()
-      }
-      else{
-        throw Error("Not logged in!")
-      }
-    })
-    .then(user => {
-      this.handleLogin(user)
-    })
-    .catch((err) => console.error(err))
+    autoLogin()
+      .then(user => {
+        this.handleLogin(user)
+      })
+      .catch((err) => console.error(err))
   }
 
   handleLogin = (currentUser) => {
-    this.setState({currentUser}, () => {
-      // this.props.history.push("/")
+    this.setState({
+      currentUser,
+      message: null
     })
   }
 
   handleLogout = () => {
-    fetch("http://localhost:3000/logout", {
-      credentials: "include"
-    })
-    .then(r => r.json())
+    logout()
     .then(logoutResponse => {
       this.setState({
         currentUser: null,
@@ -74,16 +64,22 @@ class Main extends Component {
                 message={this.state.message}
               />
               )}/>
-            <Route exact path="/login" render={() => (
+            {/* <Route exact path="/login" render={() => (
               <Login
                 handleLogIn={this.handleLogin}
               />
-            )}/>
-            <Route exact path="/signup" render={() => (
+            )}/> */}
+            <Route path="/login">
+            {this.state.currentUser ?  <Redirect to='/' /> : <Login handleLogIn={this.handleLogin} /> }
+          </Route>
+            {/* <Route exact path="/signup" render={() => (
               <SignUp
                 handleLogIn={this.handleLogin}
               />
-            )}/>
+            )}/> */}
+            <Route path="/signup">
+              {this.state.currentUser ?  <Redirect to='/' /> : <SignUp handleLogIn={this.handleLogin}/> }
+            </Route>
 
             <Route path="/profile">
               {this.state.currentUser ? <Profile currentUser={this.state.currentUser} /> : <Redirect to='/login' />}
