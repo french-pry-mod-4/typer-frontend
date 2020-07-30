@@ -92,7 +92,11 @@ nav > * {
 .sidebarItem:hover {
   transform: scale(1.05);
   -webkit-box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1);
-  box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1);
+  box-shadow: 0 0 5px rgba(16,215,174, 1),
+              0 0 25px rgba(16,215,174, 1),
+              0 0 40px rgba(16,215,174, 1),
+              0 0 70px rgba(16,215,174, 1);
+  /* box-shadow: 0px 0px 10px 6px rgba(16,215,174, 1); */
   text-shadow: 1px 1px 2px #650d89, 0 0 30px #fd1d53, 0 0 5px #fd3777;
   transition: .75s;
 }
@@ -348,7 +352,7 @@ td {
   font-size: 1.2em;
   color: #fff;
   border: 2px solid rgba(3, 233, 244);
-  width: 20vw;
+  width: 100%;
   margin: 2vh auto 0;
   outline: none;
   border: none;
@@ -363,6 +367,7 @@ td {
 
 .credentialSubmit:hover {
   /* color: #000; */
+  transform: scale(1.01);
   box-shadow: 0 0 5px #03e9f4,
               0 0 25px #03e9f4,
               0 0 40px #03e9f4,

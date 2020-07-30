@@ -17,10 +17,10 @@ const SignUp = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(signUpInput)
-  
+
     fetch("http://localhost:3000/users", {
       method: "POST",
-      credentials: "include", 
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },
@@ -54,11 +54,18 @@ const SignUp = (props) => {
   return(
     <>
       {/* {errors && renderErrors()} */}
-      <form onChange={handleChange} onSubmit={handleSubmit}>
-        <input type="text" name="username" value={username} />
-        <input type="password" name="password" value={password}/>
-        <input type="submit"/>
-      </form>
+      <div className="content">
+        <div className="credentialContainer">
+          <div className="credentialContainerInner">
+            <h1>SIGN UP</h1>
+            <form onChange={handleChange} onSubmit={handleSubmit}>
+              <input className="credentialInput" type="text" name="username" value={username} autoComplete='off' placeholder="Username"/>
+              <input className="credentialInput" type="password" name="password" value={password} autoComplete='off' placeholder="Password"/>
+              <input className="credentialSubmit" type="submit"/>
+            </form>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
