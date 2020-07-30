@@ -16,6 +16,8 @@ export default class Scoreboard extends Component {
         )})
   }
 
+  // have your handler to filter here
+
   render() {
     return (
       <div className="sb_content">
@@ -24,27 +26,29 @@ export default class Scoreboard extends Component {
             <h1 className="leaderboardH1">Leaderboard</h1>
           </div>
         </div>
-        <table className="table-container">
-        <tr>
-          <th>User</th>
-          <th>Speed</th>
-          <th>Accuracy</th>
-          <th>Passage</th>
-        </tr>
+        {/* <div className="table-container"> */}
+        <div className="scoreStatsContainer">
+          <div className="scoreStatsHeader"><h2>User</h2></div>
+          <div className="scoreStatsHeader"><h2>Speed</h2></div>
+          <div className="scoreStatsHeader"><h2>Accuracy</h2></div>
+          <div className="scoreStatsHeader"><h2>Passage</h2></div>
+        </div>
 
-        {this.state.highScores.map((gameScore) =>
-            <Score
-              key={gameScore.id}
-              id={gameScore.id}
-              username={gameScore.user.username}
-              speed={gameScore.speed}
-              accuracy={gameScore.accuracy}
-              passage={gameScore.passage}
-            />
-          )}
+        <div className="scoreStatsScroll">
+          {this.state.highScores.map((gameScore) =>
+              <Score
+                key={gameScore.id}
+                id={gameScore.id}
+                username={gameScore.user.username}
+                speed={gameScore.speed}
+                accuracy={gameScore.accuracy}
+                passage={gameScore.passage}
+              />
+            )}
+        </div>
 
 
-      </table>
+      {/* </div> */}
       </div>
     )
   }

@@ -54,6 +54,7 @@ main {
 
 nav {
   backdrop-filter: blur(10px);
+  /* background-image: url('https://64.media.tumblr.com/7459d2a1fb85241e6cd2401fee0c8e80/317d03e1c6be4f33-51/s400x600/a18081804fe143d50726c60e37afcbe3b3ccb117.gifv'); */
   background-image: url('https://i.imgur.com/KCwAMdz_d.webp?maxwidth=728&fidelity=grand');
   background-size: cover;
   background-repeat: no-repeat;
@@ -321,14 +322,6 @@ th, td {
   background-image: linear-gradient(to right bottom, #541388, #44228a, #332b8b, #20328a, #023788);
 }
 
-.table-container {
-  border: 1px solid white;
-  width: 90%;
-  margin: 0 auto;
-  border: none;
-  border-collapse: collapse;
-}
-
 th {
   font-family: 'Outrun Future';
   color: #fff;
@@ -355,7 +348,7 @@ td {
   /* padding: 5em 0; */
   border-radius: 15px;
   box-shadow: 0px 0px 10px 6px rgba(3, 233, 244,0.7);
-  background-image: url('https://www.lefthudson.com/wp-content/uploads/2019/11/retro-neon-background-fresh-synthwave-wallpaper-wallpapersafari-this-month-of-retro-neon-background.jpg');
+  background-image: url('./assets/zoom.gif');
   background-size: cover;
   /* backdrop-filter: blur(10px); */
 }
@@ -444,29 +437,79 @@ td {
   /* padding: 50px 0; */
   /* display: grid;
   place-items: center; */
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .leaderBoardHeader {
-  border: 1px solid red;
-
+  /* border: 1px solid red; */
+  background-image: url('./assets/countach.gif');
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 6px rgba(95,241,251,0.9);
   width: 100%;
   /* height: fit-content; */
+  display: grid;
+  place-items: center;
+  height: 20vh;
 }
 
 .leaderBoardHeaderInner {
-  height: 100%;
-  width: 100%;
-  height: 10vh;
+  height: 70%;
+  width: 95%;
+  /* height: 12vh; */
   backdrop-filter: blur(10px);
+  border-radius: 5px;
+  line-height: 13vh;
 }
 
 .leaderboardH1 {
   height: 100%;
+  font-family: 'Outrun Future';
+  text-shadow: 1px 1px 2px #650d89, 0 0 15px #fd1d53, 0 0 5px #fd3777;
+  color: #fff;
   margin-block-start: 0em;
   margin-block-end: 0em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
   padding: none;
   margin: none;
+
+}
+
+.scoreStatsScroll {
+  height: 50vh;
+  overflow-x: scroll;
+}
+
+.scoreStatsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  height: 4vh;
+  line-height: 4vh;
+  margin: 2vh auto;
+}
+
+.scoreStatsHeader {
+  text-align: center;
+  width: 11vw;
+  /* box-shadow: 0px 0px 10px 6px rgba(95,241,251,0.7); */
+  font-family: 'Outrun Future';
+  /* text-shadow: 1p */
+  text-shadow: 1px 1px 2px #d16ba5, 0 0 15px #ba83ca, 0 0 5px #46eefa;
+  /* background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); */
+  color: #fff;
+  border-radius: 3px;
+}
+
+.scoreStats {
+  text-align: center;
+  width: 11vw;
+  box-shadow: 0px 0px 10px 6px rgba(95,241,251,0.5);
+  font-family: 'VCR Mono';
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  color: #000;
+  border-radius: 3px;
 }
