@@ -6,6 +6,7 @@ import Scoreboard from './Scoreboard'
 import GameBoard from './GameBoard'
 import SignUp from './SignUp'
 import Login from './Login'
+import { autoLogin, logout } from '../fetches'
 
 import {
   BrowserRouter,
@@ -24,21 +25,11 @@ class Main extends Component {
 
   //log in user when component mounts
   componentDidMount(){
-    fetch("http://localhost:3000/autologin", {
-      credentials: "include" // tells browser to send cookies with fetch req
-    })
-    .then(r => {
-      if (r.ok) {
-        return r.json()
-      }
-      else{
-        throw Error("Not logged in!")
-      }
-    })
-    .then(user => {
-      this.handleLogin(user)
-    })
-    .catch((err) => console.error(err))
+    autoLogin()
+      .then(user => {
+        this.handleLogin(user)
+      })
+      .catch((err) => console.error(err))
   }
 
   handleLogin = (currentUser) => {
@@ -49,10 +40,7 @@ class Main extends Component {
   }
 
   handleLogout = () => {
-    fetch("http://localhost:3000/logout", {
-      credentials: "include"
-    })
-    .then(r => r.json())
+    logout()
     .then(logoutResponse => {
       this.setState({
         currentUser: null,

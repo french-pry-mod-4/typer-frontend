@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Score from './Score'
+import {deleteGame, getUserstats} from '../fetches'
 
 export default class Profile extends Component {
   state = {
@@ -10,30 +11,20 @@ export default class Profile extends Component {
 
   componentDidMount() {
     // custom route to get currentUser's game stats
-    fetch('http://localhost:3000/userstats',{
-      credentials: "include"
-    })
-    .then(r => r.json())
-    .then(games => {
-      console.log("games", games)
-      // hacky way to make sure 'empty' games don't show up
-      // should really change them to be created only at the end, but hen we won't have update
-      const filteredGames = games.filter(game => game.speed)
-      console.log("filteredGames", filteredGames)
-      this.setState( 
-        { games: filteredGames } )
-    })
+    getUserstats()
+      .then(games => {
+        console.log("games", games)
+        // hacky way to make sure 'empty' games don't show up
+        // should really change them to be created only at the end, but hen we won't have update
+        const filteredGames = games.filter(game => game.speed)
+        console.log("filteredGames", filteredGames)
+        this.setState( 
+          { games: filteredGames } )
+      })
   }
 
   handleDelete = (id) => {
-    fetch(`http://localhost:3000/games/${id}`, {
-      method: 'DELETE',
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(r => r.json)
+    deleteGame(id)
     .then(response => {
       const updatedGames = this.state.games.filter(game => game.id !== id)
       this.setState({

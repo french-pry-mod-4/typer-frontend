@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { render } from 'react-dom';
 import {withRouter} from 'react-router'
+import { signUp } from '../fetches'
 
 
 const SignUp = (props) => {
@@ -18,25 +19,16 @@ const SignUp = (props) => {
     e.preventDefault()
     console.log(signUpInput)
 
-    fetch("http://localhost:3000/users", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // body: JSON.stringify({signUpInput})
-      body: JSON.stringify({username, password})
-    })
-    .then(r => r.json())
-    .then(newUser => {
-      console.log(newUser)
-      if (newUser.messages){
-        setErrors(newUser.messages)
-      }
-      else{
-        props.handleLogIn(newUser)
-        props.history.push("/")
-      }
+    signUp(username, password)
+      .then(newUser => {
+        console.log(newUser)
+        if (newUser.messages){
+          setErrors(newUser.messages)
+        }
+        else{
+          props.handleLogIn(newUser)
+          props.history.push("/")
+        }
 
       // }
       // else {

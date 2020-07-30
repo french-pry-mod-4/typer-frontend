@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Stopwatch from './Stopwatch'
 import Odometer from 'react-odometerjs'
 import 'odometer/themes/odometer-theme-default.css'
+import { getGame, deleteGame, updateGame } from '../fetches'
 
 export default class GameBoard extends Component{
 
@@ -18,27 +19,16 @@ export default class GameBoard extends Component{
   id = this.props.match.params.id
 
   componentDidMount(){
-    // const id = this.props.match.params.id
-    fetch(`http://localhost:3000/games/${this.id}`, {
-      credentials: "include"
-    })
-    .then(r => r.json())
-    .then(game => {
-      this.setState({ game })
-    })
+    getGame(this.id)
+      .then(game => {
+        this.setState({ game })
+      })
   }
 
   componentWillUnmount(){
     if (!this.state.game.speed){ // speed is null(game wasn't completed) or 0
-      fetch(`http://localhost:3000/games/${this.id}`, {
-        method: 'DELETE',
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(r => r.json())
-      .then(response => console.log("deleted:", response))
+      deleteGame(this.id)
+        .then(response => console.log("deleted:", response))
     }
   }
 
@@ -109,19 +99,11 @@ export default class GameBoard extends Component{
       accuracy
     }
     console.log(scoreInfo)
-    fetch(`http://localhost:3000/games/${this.id}`, {
-      method: "PATCH",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(scoreInfo)
-    })
-    .then(r => r.json())
-    .then(updatedGame => {
-      this.setState({ game: updatedGame })
-      console.log(updatedGame)
-    })
+    updateGame(this.id, scoreInfo)
+      .then(updatedGame => {
+        this.setState({ game: updatedGame })
+        console.log(updatedGame)
+      })
   }
 
   calculateAccuracy = () => {
