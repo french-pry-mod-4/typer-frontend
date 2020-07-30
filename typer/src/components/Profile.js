@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Score from './Score'
+// import Score from './Score'
 import {deleteGame, getUserstats} from '../fetches'
 
 export default class Profile extends Component {
@@ -60,16 +60,19 @@ export default class Profile extends Component {
         </div>
         <div className="profile-scores">
           <table className="table-container">
+            <thead>
             <tr>
               <th>Passage</th>
               <th>Speed</th>
               <th>Accuracy</th>
               <th>Delete</th>
             </tr>
+            </thead>
             {/* create a div here that you can scroll through */}
             {console.log("state", this.state)}
+            <tbody>
             {this.state.games.map((game) =>
-                <tr className="tableRow-data" id={game.id}>
+                <tr className="tableRow-data" key={game.id}>
                   <td>{game.passage.name || game.passage.id}</td>
                   <td>{game.speed}</td>
                   <td>{game.accuracy}%</td>
@@ -77,6 +80,7 @@ export default class Profile extends Component {
                   <td><button onClick={() => this.handleDelete(game.id)}>Delete</button></td>
                 </tr>
               )}
+              </tbody>
           </table>
         </div>
       </div>

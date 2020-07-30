@@ -45,9 +45,9 @@ const Login = (props) => {
         <div className="credentialContainer">
           <div className="credentialContainerInner">
             <h1>LOGIN</h1>
-            <form onChange={handleChange} onSubmit={handleSubmit}>
-              <input className="credentialInput" type="text" name="username" value={username} autoComplete='off' placeholder="Username"/>
-              <input className="credentialInput" type="password" name="password" value={password} autoComplete='off' placeholder="Password"/>
+            <form  onSubmit={handleSubmit}>
+              <input className="credentialInput" type="text" name="username" value={username} onChange={handleChange} autoComplete='off' placeholder="Username"/>
+              <input className="credentialInput" type="password" name="password" value={password} onChange={handleChange} autoComplete='off' placeholder="Password"/>
               <input className="credentialSubmit" type="submit"/>
             </form>
           </div>

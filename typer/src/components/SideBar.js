@@ -11,7 +11,7 @@ class SideBar extends Component {
     this.props.history.push("/")
   }
   render() {
-    const {currentUser, handleLogout } = this.props
+    const {currentUser} = this.props
     return (
       <nav>
         <Logo />
