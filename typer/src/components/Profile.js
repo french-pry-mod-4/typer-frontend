@@ -65,7 +65,6 @@ export default class Profile extends Component {
           </div>
         </div>
         <div className="profile-scores">
-          <table className="table-container">
             <tr>
               <th>Passage</th>
               <th>Speed</th>
@@ -74,16 +73,17 @@ export default class Profile extends Component {
             </tr>
             {/* create a div here that you can scroll through */}
             {console.log("state", this.state)}
-            {this.state.games.map((game) =>
-                <tr className="tableRow-data" id={game.id}>
-                  <td>{game.passage.name || game.passage.id}</td>
-                  <td>{game.speed}</td>
-                  <td>{game.accuracy}%</td>
-                  {/* should only show up on hover */}
-                  <td><button onClick={() => this.handleDelete(game.id)}>Delete</button></td>
-                </tr>
-              )}
-          </table>
+            <div className="profileStatsScroll">
+              {this.state.games.map((game) =>
+                  <tr className="tableRow-data" id={game.id}>
+                    <td>{game.passage.name || game.passage.id}</td>
+                    <td>{game.speed}</td>
+                    <td>{game.accuracy}%</td>
+                    {/* should only show up on hover */}
+                    <td><button onClick={() => this.handleDelete(game.id)}>Delete</button></td>
+                  </tr>
+                )}
+            </div>
         </div>
       </div>
     )
