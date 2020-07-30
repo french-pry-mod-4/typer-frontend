@@ -29,7 +29,14 @@ export default class Profile extends Component {
         "Content-Type": "application/json"
       }
     })
-  console.log('deleted')
+    .then(r => r.json)
+    .then(response => {
+      const updatedGames = this.state.games.filter(game => game.id !== id)
+      this.setState({
+        games: updatedGames
+      })
+      console.log("deleted:", response)
+    })
   }
 
   render() {
