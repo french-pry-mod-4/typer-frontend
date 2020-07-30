@@ -116,5 +116,8 @@ export function autoLogin(){
 }
 
 export function logout(){
-  
+  return fetch("http://localhost:3000/logout", {
+    credentials: "include"
+  })
+  .then(r => r.json())
 }
