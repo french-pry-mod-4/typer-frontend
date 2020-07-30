@@ -51,8 +51,11 @@ class Main extends Component {
       credentials: "include"
     })
     .then(r => r.json())
-    .then(() => {
-      this.setState({currentUser: null})
+    .then(logoutResponse => {
+      this.setState({
+        currentUser: null,
+        message: logoutResponse.message
+      })
     })
   }
 
@@ -68,6 +71,7 @@ class Main extends Component {
             <Route exact path="/" render={routeProps => (
               <Home {...routeProps}
                 currentUser={this.state.currentUser}
+                message={this.state.message}
               />
               )}/>
             <Route exact path="/login" render={() => (
