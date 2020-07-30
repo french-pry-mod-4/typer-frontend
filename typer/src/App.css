@@ -322,14 +322,6 @@ th, td {
   background-image: linear-gradient(to right bottom, #541388, #44228a, #332b8b, #20328a, #023788);
 }
 
-.table-container {
-  border: 1px solid white;
-  width: 90%;
-  margin: 0 auto;
-  border: none;
-  border-collapse: collapse;
-}
-
 th {
   font-family: 'Outrun Future';
   color: #fff;
@@ -445,21 +437,21 @@ td {
   /* padding: 50px 0; */
   /* display: grid;
   place-items: center; */
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .leaderBoardHeader {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   background-image: url('./assets/countach.gif');
   background-size: cover;
   background-position: center;
   border-radius: 5px;
-  box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
+  box-shadow: 0px 0px 10px 6px rgba(95,241,251,0.9);
   width: 100%;
   /* height: fit-content; */
   display: grid;
   place-items: center;
-  height: 12vh;
+  height: 20vh;
 }
 
 .leaderBoardHeaderInner {
@@ -468,7 +460,7 @@ td {
   /* height: 12vh; */
   backdrop-filter: blur(10px);
   border-radius: 5px;
-  line-height: 8.4vh;
+  line-height: 13vh;
 }
 
 .leaderboardH1 {
@@ -485,16 +477,39 @@ td {
 
 }
 
+.scoreStatsScroll {
+  height: 50vh;
+  overflow-x: scroll;
+}
+
 .scoreStatsContainer {
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   text-align: center;
+  height: 4vh;
+  line-height: 4vh;
+  margin: 2vh auto;
+}
+
+.scoreStatsHeader {
+  text-align: center;
+  width: 11vw;
+  /* box-shadow: 0px 0px 10px 6px rgba(95,241,251,0.7); */
+  font-family: 'Outrun Future';
+  /* text-shadow: 1p */
+  text-shadow: 1px 1px 2px #d16ba5, 0 0 15px #ba83ca, 0 0 5px #46eefa;
+  /* background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); */
+  color: #fff;
+  border-radius: 3px;
 }
 
 .scoreStats {
   text-align: center;
-  width: 10vw;
-  border: 1px solid white;
+  width: 11vw;
+  box-shadow: 0px 0px 10px 6px rgba(95,241,251,0.5);
+  font-family: 'VCR Mono';
+  background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  color: #000;
+  border-radius: 3px;
 }
