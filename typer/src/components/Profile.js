@@ -47,11 +47,11 @@ export default class Profile extends Component {
               </div>
               <div className="statsDataContainer">
                 <h2>WPM</h2>
-                <h3>{parseInt(calcWPM / this.state.games.length)}</h3>
+                <h3>{parseInt(calcWPM / this.state.games.length) || 0}</h3>
               </div>
               <div className="statsDataContainer">
                 <h2>Accuracy</h2>
-                <h3>{parseInt(calcAccuracy / this.state.games.length)}%</h3>
+                <h3>{parseInt(calcAccuracy / this.state.games.length) || 0}%</h3>
               </div>
             </div>
           </div>
