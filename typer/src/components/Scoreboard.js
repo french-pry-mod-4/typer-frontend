@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Score from './Score'
+import { getHighScoreGames } from '../fetches'
 
 export default class Scoreboard extends Component {
 
@@ -8,12 +9,11 @@ export default class Scoreboard extends Component {
   }
   componentDidMount(){
     // fetch high scores
-    fetch("http://localhost:3000/games")
-      .then(r => r.json())
+    getHighScoreGames()
       .then(highScores => {
         console.log("highscores", highScores)
         this.setState({highScores: highScores}
-        )})
+      )})
   }
 
   // have your handler to filter here

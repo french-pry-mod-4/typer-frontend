@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import {withRouter} from 'react-router'
+import { withRouter } from 'react-router'
+import { login } from '../fetches'
 
 const Login = (props) => {
 
@@ -17,27 +18,18 @@ const Login = (props) => {
 
     // console.log(loginInput)
 
-    fetch("http://localhost:3000/login", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      // body: JSON.stringify({loginInput})
-      body: JSON.stringify({username, password})
-    })
-    .then(r => r.json())
-    .then(user => {
-      console.log("user", user)
-      // if login was successful
-      if (user.username){
-        props.handleLogIn(user)
-        props.history.push("/")
-      }
-      else{
-        setError(user.message)
-      }
-    })
+    login(username, password)
+      .then(user => {
+        console.log("user", user)
+        // if login was successful
+        if (user.username){
+          props.handleLogIn(user)
+          props.history.push("/")
+        }
+        else{
+          setError(user.message)
+        }
+      })
   }
 
   const handleChange = (e) => {
