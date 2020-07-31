@@ -11,7 +11,7 @@ class SideBar extends Component {
     this.props.history.push("/")
   }
   render() {
-    const {currentUser, handleLogout } = this.props
+    const {currentUser } = this.props
     return (
       <nav>
         <Logo />
@@ -20,6 +20,7 @@ class SideBar extends Component {
         <NavLink exact to="/"><li className="sidebarItem">Home</li></NavLink>
         <NavLink to="/profile"><li className="sidebarItem">Stats</li></NavLink>
         <NavLink to="/scoreboard"><li className="sidebarItem">Scoreboard</li></NavLink>
+        <NavLink to="/addPassage"><li className="sidebarItem">Add a Passage</li></NavLink>
         <li className="sidebarItem" onClick={this.handleLogoutClick}>Logout</li>
           </>
         ) : (

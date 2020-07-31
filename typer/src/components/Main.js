@@ -6,6 +6,7 @@ import Scoreboard from './Scoreboard'
 import GameBoard from './GameBoard'
 import SignUp from './SignUp'
 import Login from './Login'
+import AddPassage from './AddPassage'
 import { autoLogin, logout } from '../fetches'
 
 import {
@@ -85,6 +86,7 @@ class Main extends Component {
               {this.state.currentUser ? <Profile currentUser={this.state.currentUser} /> : <Redirect to='/login' />}
             </Route>
             <Route path="/scoreboard" component={Scoreboard} />
+            <Route path="/addpassage" component={AddPassage} />
 
             {/* <Route path="games/:id">
               {this.state.currentUser ?  <Profile currentUser={this.state.currentUser} /> : <Redirect to='/login' />}
