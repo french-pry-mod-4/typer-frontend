@@ -190,6 +190,8 @@ export default class GameBoard extends Component{
 
               </div> : null}
             </div>
+            {/* redundant */}
+            {this.state.gameStatus !== 'over' ? <h3>Click anywhere and start typing</h3> : null }
             <div className="passageTextContainer">
               <p className="passageText">{this.state.game ? this.renderViewText() : "loading..."}</p>
             </div>
