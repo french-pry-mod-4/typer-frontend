@@ -11,7 +11,6 @@ export default class Scoreboard extends Component {
     // fetch high scores
     getHighScoreGames()
       .then(highScores => {
-        console.log("highscores", highScores)
         this.setState({highScores: highScores}
       )})
   }

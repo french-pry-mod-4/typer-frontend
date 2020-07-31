@@ -68,7 +68,7 @@ export default class Profile extends Component {
             {console.log("state", this.state)}
             <div className="profileStatsScroll">
               {this.state.games.map((game) =>
-                  <div className="profileStatWrapper" id={game.id}>
+                  <div className="profileStatWrapper" key={game.id}>
                     <div className="scoreStats">{game.passage.name || game.passage.id}</div>
                     <div className="scoreStats">{game.speed}</div>
                     <div className="scoreStats">{game.accuracy}%</div>
