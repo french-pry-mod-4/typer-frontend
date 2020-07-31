@@ -25,7 +25,6 @@ export default class Scoreboard extends Component {
             <h1 className="leaderboardH1">Leaderboard</h1>
           </div>
         </div>
-        {/* <div className="table-container"> */}
         <div className="scoreStatsContainer">
           <div className="scoreStatsHeader"><h2>User</h2></div>
           <div className="scoreStatsHeader"><h2>Speed</h2></div>

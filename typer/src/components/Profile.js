@@ -41,8 +41,6 @@ export default class Profile extends Component {
       <div className="sb_content">
         <div className="profile-header-wrapper">
           <div className="profile-header">
-
-            {/* <h1 className="profile-userName">{this.state.user}</h1> */}
             <div className="profile-userStats">
               <div className="statsDataContainer">
                 <h2>Games</h2>
@@ -60,23 +58,23 @@ export default class Profile extends Component {
           </div>
         </div>
         <div className="profile-scores">
-            <tr>
-              <th>Passage</th>
-              <th>Speed</th>
-              <th>Accuracy</th>
-              <th>Delete</th>
-            </tr>
+          <div className="scoreStatsContainer">
+            <div className="scoreStatsHeader"><h2>Speed</h2></div>
+            <div className="scoreStatsHeader"><h2>Accuracy</h2></div>
+            <div className="scoreStatsHeader"><h2>Passage</h2></div>
+            <div className="scoreStatsHeader"></div>
+          </div>
             {/* create a div here that you can scroll through */}
             {console.log("state", this.state)}
             <div className="profileStatsScroll">
               {this.state.games.map((game) =>
-                  <tr className="tableRow-data" key={game.id}>
-                    <td>{game.passage.name || game.passage.id}</td>
-                    <td>{game.speed}</td>
-                    <td>{game.accuracy}%</td>
+                  <div className="profileStatWrapper" key={game.id}>
+                    <div className="scoreStats">{game.passage.name || game.passage.id}</div>
+                    <div className="scoreStats">{game.speed}</div>
+                    <div className="scoreStats">{game.accuracy}%</div>
                     {/* should only show up on hover */}
-                    <td><button onClick={() => this.handleDelete(game.id)}>Delete</button></td>
-                  </tr>
+                    <div className="scoreStats"><button onClick={() => this.handleDelete(game.id)}>Delete</button></div>
+                  </div>
                 )}
             </div>
         </div>

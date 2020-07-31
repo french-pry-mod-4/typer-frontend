@@ -14,6 +14,7 @@ export default class AddPassage extends Component {
     // console.log(obj)
     fetch('http://localhost:3000/passages', {
       method: 'POST',
+      credentials: "include",
       headers: {
         "Content-Type": "application/json"
       },

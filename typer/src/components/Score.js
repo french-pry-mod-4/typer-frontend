@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 export default class Score extends Component {
   render() {
     return (
-        <div className="scoreStatsContainer">
+        <div className="scoreStatsWrapper">
           <div className="scoreStats">{this.props.username}</div>
           <div className="scoreStats">{this.props.speed}</div>
           <div className="scoreStats">{this.props.accuracy}</div>
