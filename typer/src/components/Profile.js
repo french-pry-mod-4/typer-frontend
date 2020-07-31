@@ -18,7 +18,7 @@ export default class Profile extends Component {
         // should really change them to be created only at the end, but hen we won't have update
         const filteredGames = games.filter(game => game.speed)
         console.log("filteredGames", filteredGames)
-        this.setState( 
+        this.setState(
           { games: filteredGames } )
       })
   }
@@ -38,10 +38,11 @@ export default class Profile extends Component {
     const calcWPM = this.state.games.reduce((total, game) => total + game.speed, 0)
     const calcAccuracy = this.state.games.reduce((total, game) => total + game.accuracy, 0)
     return (
-      <div className="content">
+      <div className="sb_content">
         <div className="profile-header-wrapper">
           <div className="profile-header">
-            <h1 className="profile-userName">{this.state.user}</h1>
+
+            {/* <h1 className="profile-userName">{this.state.user}</h1> */}
             <div className="profile-userStats">
               <div className="statsDataContainer">
                 <h2>Games</h2>
@@ -59,7 +60,6 @@ export default class Profile extends Component {
           </div>
         </div>
         <div className="profile-scores">
-          <table className="table-container">
             <tr>
               <th>Passage</th>
               <th>Speed</th>
@@ -68,16 +68,17 @@ export default class Profile extends Component {
             </tr>
             {/* create a div here that you can scroll through */}
             {console.log("state", this.state)}
-            {this.state.games.map((game) =>
-                <tr className="tableRow-data" id={game.id}>
-                  <td>{game.passage.name || game.passage.id}</td>
-                  <td>{game.speed}</td>
-                  <td>{game.accuracy}%</td>
-                  {/* should only show up on hover */}
-                  <td><button onClick={() => this.handleDelete(game.id)}>Delete</button></td>
-                </tr>
-              )}
-          </table>
+            <div className="profileStatsScroll">
+              {this.state.games.map((game) =>
+                  <tr className="tableRow-data" id={game.id}>
+                    <td>{game.passage.name || game.passage.id}</td>
+                    <td>{game.speed}</td>
+                    <td>{game.accuracy}%</td>
+                    {/* should only show up on hover */}
+                    <td><button onClick={() => this.handleDelete(game.id)}>Delete</button></td>
+                  </tr>
+                )}
+            </div>
         </div>
       </div>
     )
