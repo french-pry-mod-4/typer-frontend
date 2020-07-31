@@ -119,7 +119,7 @@ nav > * {
   /* width: 5px; */
   border-radius: 20px;
   position: absolute;
-  width: 100%;
+  width: 60vw;
   backdrop-filter: blur(25px);
   z-index: 1;
   top: 0;

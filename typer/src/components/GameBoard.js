@@ -162,6 +162,8 @@ export default class GameBoard extends Component{
                     className="odometerVals"
                     format="(.ddd),dd" />
                 </div>
+                {/* toggle this in a function */}
+                <h3>Click anywhere and start typing</h3>
 
               {/* If you don't want the incorrect to show up until the game begins, see below (currently commenteed out): */}
               {/* {this.state.gameStatus ?
@@ -176,9 +178,17 @@ export default class GameBoard extends Component{
                     format="(.ddd),dd" />
                 </div>
                 <div className="accuracyContainer">
-                  <h4 className="gameDetails">Accuracy {this.calculateAccuracy()}%</h4>
+                  <h4 className="gameDetails">Accuracy</h4>
+                  <span>
+                    <Odometer
+                      value={this.calculateAccuracy()}
+                      className="odometerVals"
+                      format="(.ddd),dd" />
+                      %
+                  </span>
                 </div>
-              </div>  : null}
+
+              </div> : null}
             </div>
             <div className="passageTextContainer">
               <p className="passageText">{this.state.game ? this.renderViewText() : "loading..."}</p>
