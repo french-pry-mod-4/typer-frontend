@@ -36,15 +36,15 @@ const Login = (props) => {
     setloginInput({...loginInput, [e.target.name]: e.target.value})
   }
 
-  
+
 
   return(
     <>
-    {error ? <h3 style={{color:"red"}}>{error}</h3> : null }
       <div className="content">
         <div className="credentialContainer">
           <div className="credentialContainerInner">
             <h1>LOGIN</h1>
+            {error ? <h3 className="errorMsg" style={{color:"red"}}>{error}</h3> : null }
             <form onSubmit={handleSubmit}>
               <input className="credentialInput" type="text" name="username" value={username} onChange={handleChange} autoComplete='off' placeholder="Username"/>
               <input className="credentialInput" type="password" name="password" value={password} onChange={handleChange} autoComplete='off' placeholder="Password"/>

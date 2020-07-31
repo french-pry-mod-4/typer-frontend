@@ -30,7 +30,7 @@ export default class Home extends Component {
     }
     else{
       console.log(id)
-      
+
       createGame(id)
         .then(newGame => {
           console.log(newGame)
@@ -61,8 +61,9 @@ export default class Home extends Component {
     })
     // on filtering it looks wonky, can be fixed with adjusting the height to not change
     return (
-      <section className="content">
-        {this.props.message ? <h3 style={{color:"red"}}>{this.props.message}</h3> : null }
+      <section className="home-content">
+        {/* {this.props.message ? <h3 style={{color:"red"}}>{this.props.message}</h3> : null } */}
+        {/* the logged out message is here */}
         <div className="filterWrapper">
           <input className="searchBar"
             type="text"

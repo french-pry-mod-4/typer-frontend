@@ -41,6 +41,10 @@ main {
   align-items: center;
 }
 
+.titleText {
+  content: "hello"
+}
+
 .logoContainer {
   height: 325px;
   width: 100%;
@@ -77,8 +81,8 @@ nav > * {
   width: 80%;
   border-radius: 5px;
   font-weight: 800;
-  height: 5vh;
-  margin: 5vh auto;
+  height: 6vh;
+  margin: 3vh auto;
   font-size: 1.3em;
   line-height: 5vh;
   -webkit-box-shadow: 0px 0px 10px 6px rgba(16,215,174, 0.7);
@@ -101,6 +105,44 @@ nav > * {
   transition: .75s;
 }
 
+.home-content {
+  width: 60%;
+  height: 100vh;
+  margin: 0 auto;
+  /* padding: 50px 0; */
+  display: grid;
+  place-items: center;
+  /* border: 1px solid red; */
+  position: relative;
+}
+
+.filterWrapper {
+  height: 15vh;
+  position: absolute;
+  width: 70vw;
+  backdrop-filter: blur(25px);
+  z-index: 1;
+  top: 0;
+  right: -50px;
+  display: grid;
+  place-items: center;
+  /* box-shadow: 10px 10px 10px transparent; */
+}
+
+.searchBar {
+  font-size: 1.2em;
+  height: 4vh;
+  color: #000;
+  background-color: #2de2e6;
+  border: none;
+  font-family: 'VCR Mono';
+  outline: none;
+  border-radius: 5px;
+  border: 3px solid #2de2e6;
+  box-shadow: 0px 0px 10px 6px rgba(45, 236, 230,0.7);
+  width: 40vw;
+}
+
 .content {
   width: 60%;
   height: 80vh;
@@ -112,10 +154,12 @@ nav > * {
 }
 
 .tileWrapper {
-  height: 100%;
+  height: 80%;
   width: 100%;
   display: grid;
   place-items: center;
+  /* margin-top: 10vh; */
+  padding-top: 15vh;
   grid-template-columns: repeat(3, auto);
   grid-gap: 5vh 5vw;
   overflow-y: scroll;
@@ -170,23 +214,6 @@ nav > * {
   color: #fff;
 }
 
-.filterWrapper {
-  height: 5vh;
-  margin: 20px auto;
-}
-
-.searchBar {
-  font-size: 1.2em;
-  height: 4vh;
-  color: red;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  border-bottom: 3px solid #F9c80e;
-  filter: drop-shadow(0 10px 1rem rgba(249, 200, 14,0.7));
-  width: 35vw;
-}
-
 .statsDataContainer > h2 {
   font-family: 'VCR Mono';
   color: #fff;
@@ -202,24 +229,35 @@ nav > * {
 .gameboardContainer {
   /* color: rgba(256, 256, 256, 0.5); */
   /* padding: 2vh 2vw; */
-  height: 100%;
-  width: 100%;
+  height: fit-content;
+  width: fit-content;
   border-radius: 15px;
   position: relative;
+  padding: 3vh;
   box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
   /* background-color: red; */
-  background-image: url('https://thumbs.gfycat.com/AggravatingEmbellishedArkshell-poster.jpg');
+  background-image: url('https://i.pinimg.com/originals/79/cf/38/79cf3892e16896cfc2f150b62fb8e56a.jpg');
+  background-position: center;
   display: grid;
   place-items: center;
+  transition: .5s;
 }
 
 .gameBoardBG {
   height: 95%;
+  padding: 2vh;
   width: 95%;
   backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  transition: .5s;
+}
+
+h3 {
+  font-family: 'VCR Mono';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
 }
 
 .passageInputContainer {
@@ -259,6 +297,14 @@ nav > * {
   justify-content: space-around;
 }
 
+.gameDetailsConditional {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 0;
+  width: 50%;
+  justify-content: space-around;
+}
+
 .gameDetails {
   font-family: 'Outrun Future';
   color: #fff;
@@ -267,11 +313,17 @@ nav > * {
 }
 
 .odometer.odometer-auto-theme, .odometer.odometer-theme-default {
-  color: #fff;
   font-family: 'VCR Mono';
   color: #fff;
   text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
   font-size: 1.4em;
+}
+
+.accuracyContainer > span {
+  font-family: 'VCR Mono';
+  color: #fff;
+  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
+  font-size: 1.0em;
 }
 
 .profile-scores {
@@ -488,5 +540,121 @@ nav > * {
   width: 14vw;
   font-family: 'VCR Mono';
   color: #000;
-
+  line-height: 5vh;
+  height: 5vh;
 }
+
+.deleteBtn {
+  background-color: transparent;
+  height: 4vh;
+  font-size: 2em;
+  outline: none;
+  border: none;
+  width: 5vw;
+  font-family: 'VCR Mono';
+  color: #000;
+  line-height: 5vh;
+}
+
+.passageFormWrapper {
+  background-image: url('./assets/wip3out.gif');
+  background-size: cover;
+  width: 60%;
+  height: 70vh;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid red;
+  position: relative;
+  border: 5px solid #FF6C11;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 6px rgba(255,108,17,0.7);
+}
+
+.passageFormInner {
+  height: 97%;
+  width: 97%;
+  backdrop-filter: blur(25px);
+  display: grid;
+  place-items: center;
+}
+
+.passageForm > * {
+  /* border: 1px solid white; */
+  margin: 5px auto;
+}
+
+.passageTitleInput {
+  background-color: transparent;
+  /* border: 1px solid red; */
+  height: 7vh;
+  font-family: 'VCR Mono';
+  /* text-transform: uppercase; */
+  color: #fff;
+  line-height: 7vh;
+  outline: none;
+  border: none;
+  border-bottom: 5px solid #FF6C11;
+  font-size: 2em;
+  /* padding-left: 15px; */
+  width: 50vw;
+}
+
+.passageTextArea {
+  background-color: transparent;
+  /* border: 1px solid red; */
+  height: 30vh;
+  width: 50vw;
+  font-family: 'VCR Mono';
+  color: #fff;
+  padding: 5px;
+  backdrop-filter: blur(20px);
+  border: none;
+  background-color: #FF6C11;
+  border-radius: 2px;
+  outline: none;
+  /* opacity: 0.5; */
+  color: #000;
+  resize: none;
+  box-shadow: 0 0 1px #FF6C11,
+              0 0 5px #FF6C11,
+              0 0 7px #FF6C11,
+              0 0 10px #FF6C11;
+}
+
+.passageSubmit {
+  background-color: #FF6C11;
+  height: 5vh;
+  font-family: 'VCR Mono';
+  text-transform: uppercase;
+  font-size: 1.2em;
+  color: #fff;
+  border: 2px solid rgba(3, 233, 244);
+  width: 50vw;
+  margin: 2vh auto 0;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 1s;
+
+
+  box-shadow: 0 0 1px #FF6C11,
+              0 0 5px #FF6C11,
+              0 0 7px #FF6C11,
+              0 0 10px #FF6C11;
+}
+
+.passageSubmit:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 5px #FF6C11,
+              0 0 25px #FF6C11,
+              0 0 40px #FF6C11,
+              0 0 70px #FF6C11;
+}
+
+.errorMsg {
+  /* border: 1px solid red; */
+  margin: 15px auto 0;
+}
+
+/* here we go with media queries */
