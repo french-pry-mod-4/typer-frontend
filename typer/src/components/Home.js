@@ -62,9 +62,9 @@ export default class Home extends Component {
     // on filtering it looks wonky, can be fixed with adjusting the height to not change
     return (
       <section className="home-content">
-        {/* {this.props.message ? <h3 style={{color:"red"}}>{this.props.message}</h3> : null } */}
-        {/* the logged out message is here */}
         <div className="filterWrapper">
+        {/* the logged out message is here */}
+        {this.props.message ? <h3 className="errorMsg" style={{color:"red"}}>{this.props.message}</h3> : null }
           <input className="searchBar"
             type="text"
             placeholder="Search for a passage..."
