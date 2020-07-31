@@ -40,19 +40,20 @@ const SignUp = (props) => {
     setSignUpInput({...signUpInput, [e.target.name]: e.target.value})
   }
 
-  const renderErrors = () => {
-    if (errors){
-    return errors.map(error => <><h3 style={{color:"red"}}>{error}</h3></>)
-  }
-}
+//   const renderErrors = () => {
+//     if (errors){
+//     return errors.map(error => <><h3 className="errorMsg" style={{color:"red"}}>{error}</h3></>)
+//   }
+// }
 
   return(
     <>
-      {errors && renderErrors()}
+      {/* {errors && renderErrors()} */}
       <div className="content">
         <div className="credentialContainer">
           <div className="credentialContainerInner">
             <h1>SIGN UP</h1>
+            {errors ? <h3 className="errorMsg" style={{color:"red"}}>{errors}</h3> : null}
             <form onSubmit={handleSubmit}>
               <input className="credentialInput" type="text" name="username" value={username} onChange={handleChange} autoComplete='off' placeholder="Username"/>
               <input className="credentialInput" type="password" name="password" value={password} onChange={handleChange} autoComplete='off' placeholder="Password"/>
