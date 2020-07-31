@@ -20,18 +20,21 @@ export default class AddPassage extends Component {
       },
       body: JSON.stringify(obj)
     }).then(r => r.json())
+    e.currentTarget.reset()
   }
 
   render() {
 
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" ref={this.passageTitle} required/>
-          <textarea name="" id="" cols="30" rows="10" ref={this.passageBody} required></textarea>
-          <input type="submit"/>
-        </form>
+      <div className="passageFormWrapper">
+        <div className="passageFormInner">
+          <form className="passageForm" onSubmit={this.handleSubmit}>
+            <input placeholder="Title" className="passageTitleInput"type="text" ref={this.passageTitle} required/>
+            <textarea placeholder="Add your passage here" className="passageTextArea" ref={this.passageBody} required></textarea>
+            <input className="passageSubmit" type="submit"/>
+          </form>
+        </div>
       </div>
     )
   }

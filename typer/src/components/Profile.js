@@ -62,7 +62,6 @@ export default class Profile extends Component {
             <div className="scoreStatsHeader"><h2>Passage</h2></div>
             <div className="scoreStatsHeader"><h2>Speed</h2></div>
             <div className="scoreStatsHeader"><h2>Accuracy</h2></div>
-            <div className="scoreStatsHeader"><h2>Passage</h2></div>
             <div className="scoreStatsHeader"><h2>Actions</h2></div>
           </div>
             {/* create a div here that you can scroll through */}

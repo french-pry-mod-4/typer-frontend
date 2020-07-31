@@ -544,12 +544,8 @@ h3 {
 
 .deleteBtn {
   background-color: transparent;
-  /* background-image: url('./assets/delete.png'); */
   height: 4vh;
   font-size: 2em;
-  /* background-position: center; */
-  /* background-size: 40%; */
-  /* background-repeat: no-repeat; */
   outline: none;
   border: none;
   width: 5vw;
@@ -557,3 +553,101 @@ h3 {
   color: #000;
   line-height: 5vh;
 }
+
+.passageFormWrapper {
+  background-image: url('./assets/wip3out.gif');
+  background-size: cover;
+  width: 60%;
+  height: 70vh;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid red;
+  position: relative;
+  border: 5px solid #FF6C11;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 6px rgba(255,108,17,0.7);
+}
+
+.passageFormInner {
+  height: 97%;
+  width: 97%;
+  backdrop-filter: blur(25px);
+  display: grid;
+  place-items: center;
+}
+
+.passageForm > * {
+  /* border: 1px solid white; */
+  margin: 5px auto;
+}
+
+.passageTitleInput {
+  background-color: transparent;
+  /* border: 1px solid red; */
+  height: 7vh;
+  font-family: 'VCR Mono';
+  /* text-transform: uppercase; */
+  color: #fff;
+  line-height: 7vh;
+  outline: none;
+  border: none;
+  border-bottom: 5px solid #FF6C11;
+  font-size: 2em;
+  /* padding-left: 15px; */
+  width: 50vw;
+}
+
+.passageTextArea {
+  background-color: transparent;
+  /* border: 1px solid red; */
+  height: 30vh;
+  width: 50vw;
+  font-family: 'VCR Mono';
+  color: #fff;
+  padding: 5px;
+  backdrop-filter: blur(20px);
+  border: none;
+  background-color: #FF6C11;
+  border-radius: 2px;
+  outline: none;
+  /* opacity: 0.5; */
+  color: #000;
+  resize: none;
+  box-shadow: 0 0 1px #FF6C11,
+              0 0 5px #FF6C11,
+              0 0 7px #FF6C11,
+              0 0 10px #FF6C11;
+}
+
+.passageSubmit {
+  background-color: #FF6C11;
+  height: 5vh;
+  font-family: 'VCR Mono';
+  text-transform: uppercase;
+  font-size: 1.2em;
+  color: #fff;
+  border: 2px solid rgba(3, 233, 244);
+  width: 50vw;
+  margin: 2vh auto 0;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 1s;
+
+
+  box-shadow: 0 0 1px #FF6C11,
+              0 0 5px #FF6C11,
+              0 0 7px #FF6C11,
+              0 0 10px #FF6C11;
+}
+
+.passageSubmit:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 5px #FF6C11,
+              0 0 25px #FF6C11,
+              0 0 40px #FF6C11,
+              0 0 70px #FF6C11;
+}
+
+/* here we go with media queries */
