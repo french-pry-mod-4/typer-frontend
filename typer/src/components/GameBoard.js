@@ -188,7 +188,7 @@ export default class GameBoard extends Component{
               <textarea
                 className="passageInput"
                 name="typingInput"
-                spellcheck="false"
+                spellCheck="false"
                 // placeholder={"begin typing here"}
                 value={this.state.typingInput}
                 onChange={this.handleTyping}

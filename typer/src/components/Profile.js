@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Score from './Score'
+// import Score from './Score'
 import {deleteGame, getUserstats} from '../fetches'
 
 export default class Profile extends Component {
@@ -70,7 +70,7 @@ export default class Profile extends Component {
             {console.log("state", this.state)}
             <div className="profileStatsScroll">
               {this.state.games.map((game) =>
-                  <tr className="tableRow-data" id={game.id}>
+                  <tr className="tableRow-data" key={game.id}>
                     <td>{game.passage.name || game.passage.id}</td>
                     <td>{game.speed}</td>
                     <td>{game.accuracy}%</td>
