@@ -538,5 +538,22 @@ h3 {
   width: 14vw;
   font-family: 'VCR Mono';
   color: #000;
+  line-height: 5vh;
+  height: 5vh;
+}
 
+.deleteBtn {
+  background-color: transparent;
+  /* background-image: url('./assets/delete.png'); */
+  height: 4vh;
+  font-size: 2em;
+  /* background-position: center; */
+  /* background-size: 40%; */
+  /* background-repeat: no-repeat; */
+  outline: none;
+  border: none;
+  width: 5vw;
+  font-family: 'VCR Mono';
+  color: #000;
+  line-height: 5vh;
 }

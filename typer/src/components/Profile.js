@@ -62,7 +62,7 @@ export default class Profile extends Component {
             <div className="scoreStatsHeader"><h2>Speed</h2></div>
             <div className="scoreStatsHeader"><h2>Accuracy</h2></div>
             <div className="scoreStatsHeader"><h2>Passage</h2></div>
-            <div className="scoreStatsHeader"></div>
+            <div className="scoreStatsHeader"><h2>Actions</h2></div>
           </div>
             {/* create a div here that you can scroll through */}
             {console.log("state", this.state)}
@@ -73,7 +73,9 @@ export default class Profile extends Component {
                     <div className="scoreStats">{game.speed}</div>
                     <div className="scoreStats">{game.accuracy}%</div>
                     {/* should only show up on hover */}
-                    <div className="scoreStats"><button onClick={() => this.handleDelete(game.id)}>Delete</button></div>
+                    <div className="scoreStats">
+                      <button className="deleteBtn" onClick={() => this.handleDelete(game.id)}>x</button>
+                    </div>
                   </div>
                 )}
             </div>
