@@ -20,6 +20,7 @@ export default class AddPassage extends Component {
       },
       body: JSON.stringify(obj)
     }).then(r => r.json())
+    .then(() => this.props.history.push("/"))
     e.currentTarget.reset()
   }
 
