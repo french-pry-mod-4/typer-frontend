@@ -41,6 +41,10 @@ main {
   align-items: center;
 }
 
+.titleText {
+  content: "hello"
+}
+
 .logoContainer {
   height: 325px;
   width: 100%;
@@ -230,7 +234,8 @@ nav > * {
   padding: 3vh;
   box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7);
   /* background-color: red; */
-  background-image: url('https://thumbs.gfycat.com/AggravatingEmbellishedArkshell-poster.jpg');
+  background-image: url('https://i.pinimg.com/originals/79/cf/38/79cf3892e16896cfc2f150b62fb8e56a.jpg');
+  background-position: center;
   display: grid;
   place-items: center;
   transition: .5s;
@@ -238,7 +243,7 @@ nav > * {
 
 .gameBoardBG {
   height: 95%;
-  padding: 3vh;
+  padding: 2vh;
   width: 95%;
   backdrop-filter: blur(20px);
   display: flex;
