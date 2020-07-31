@@ -59,9 +59,9 @@ export default class Profile extends Component {
         </div>
         <div className="profile-scores">
           <div className="scoreStatsContainer">
+            <div className="scoreStatsHeader"><h2>Passage</h2></div>
             <div className="scoreStatsHeader"><h2>Speed</h2></div>
             <div className="scoreStatsHeader"><h2>Accuracy</h2></div>
-            <div className="scoreStatsHeader"><h2>Passage</h2></div>
             <div className="scoreStatsHeader"></div>
           </div>
             {/* create a div here that you can scroll through */}
@@ -70,7 +70,7 @@ export default class Profile extends Component {
               {this.state.games.map((game) =>
                   <div className="profileStatWrapper" key={game.id}>
                     <div className="scoreStats">{game.passage.name || game.passage.id}</div>
-                    <div className="scoreStats">{game.speed}</div>
+                    <div className="scoreStats">{game.speed} WPM</div>
                     <div className="scoreStats">{game.accuracy}%</div>
                     {/* should only show up on hover */}
                     <div className="scoreStats"><button onClick={() => this.handleDelete(game.id)}>Delete</button></div>
