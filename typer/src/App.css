@@ -53,9 +53,8 @@ main {
 }
 
 nav {
-  backdrop-filter: blur(10px);
-  /* background-image: url('https://64.media.tumblr.com/7459d2a1fb85241e6cd2401fee0c8e80/317d03e1c6be4f33-51/s400x600/a18081804fe143d50726c60e37afcbe3b3ccb117.gifv'); */
-  background-image: url('https://i.imgur.com/KCwAMdz_d.webp?maxwidth=728&fidelity=grand');
+  backdrop-filter: blur(15px);
+  background-image: url('./assets/skyline.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -187,13 +186,6 @@ nav > * {
   filter: drop-shadow(0 10px 1rem rgba(249, 200, 14,0.7));
   width: 35vw;
 }
-
-th, td {
-  padding: 10px;
-  color: white;
-}
-
-
 
 .statsDataContainer > h2 {
   font-family: 'VCR Mono';
@@ -485,12 +477,12 @@ td {
 
 }
 
-.scoreStatsScroll {
+.scoreStatsScroll, .profileStatsScroll{
   height: 50vh;
   overflow-x: scroll;
 }
 
-.scoreStatsContainer {
+.scoreStatsContainer, .profileStatWrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
