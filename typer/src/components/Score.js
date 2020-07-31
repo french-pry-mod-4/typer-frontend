@@ -4,7 +4,7 @@ export default class Score extends Component {
   render() {
     console.log(this.props)
     return (
-        <div className="scoreStatsContainer">
+        <div className="scoreStatsWrapper">
           <div className="scoreStats">{this.props.username}</div>
           <div className="scoreStats">{this.props.speed}</div>
           <div className="scoreStats">{this.props.accuracy}</div>

@@ -276,29 +276,7 @@ nav > * {
 
 .profile-scores {
   margin-top: 5vh;
-  height: 70%;
   width: 100%;
-  border: 1px solid red;
-}
-
-th {
-  font-family: 'Outrun Future';
-  color: #fff;
-  text-shadow: 1px 1px 2px #650d89, 0 0 25px #fd1d53, 0 0 5px #fd3777;
-}
-
-.tableRow-data {
-  height: 20px;
-  width: 100%;
-  background-image: linear-gradient(to right bottom, #f9c80e, #fdb200, #ff9c00, #ff8500, #ff6c11);
-  /* margin: 5px auto; */
-}
-
-td {
-  border-radius: 5px;
-  border: none;
-  font-family: 'VCR Mono';
-  color: #fff;
 }
 
 .credentialContainer {
@@ -381,7 +359,6 @@ td {
 }
 
 .credentialSubmit:hover {
-  /* color: #000; */
   transform: scale(1.01);
   box-shadow: 0 0 5px #03e9f4,
               0 0 25px #03e9f4,
@@ -389,15 +366,10 @@ td {
               0 0 70px #03e9f4;
 }
 
-/* Scoreboard Styling */
 .sb_content {
   width: 60%;
   height: 90vh;
   margin: 0 auto;
-  /* padding: 50px 0; */
-  /* display: grid;
-  place-items: center; */
-  /* border: 1px solid red; */
 }
 
 .leaderBoardHeader {
@@ -408,7 +380,6 @@ td {
   border-radius: 5px;
   box-shadow: 0px 0px 10px 6px rgba(95,241,251,0.9);
   width: 100%;
-  /* height: fit-content; */
   display: grid;
   place-items: center;
   height: 20vh;
@@ -420,9 +391,7 @@ td {
   background-position: center;
   border-radius: 5px;
   box-shadow: 0px 0px 10px 6px rgba(255,180,188,1);
-  /* box-shadow: 0px 0px 10px 6px rgba(253,55,119,0.7); */
   width: 100%;
-  /* height: fit-content; */
   display: grid;
   place-items: center;
   height: 20vh;
@@ -430,7 +399,6 @@ td {
 
 .profile-header {
   backdrop-filter: blur(7px);
-
   border-radius: 5px;
   width: 95%;
   height: 85%;
@@ -457,7 +425,6 @@ td {
 .leaderBoardHeaderInner {
   height: 70%;
   width: 95%;
-  /* height: 12vh; */
   backdrop-filter: blur(10px);
   border-radius: 5px;
   line-height: 13vh;
@@ -482,29 +449,38 @@ td {
   overflow-x: scroll;
 }
 
-.scoreStatsContainer, .profileStatWrapper {
+.scoreStatsContainer, .scoreStatsWrapper, .profileStatWrapper {
   display: flex;
+  width: 90%;
   flex-direction: row;
   justify-content: space-around;
   text-align: center;
-  height: 4vh;
   line-height: 4vh;
   margin: 2vh auto;
+  border-radius: 10px;
+}
+
+.scoreStatsWrapper {
   background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+  border: 3px solid rgb(95,241,251);
   box-shadow: 0px 0px 10px 6px rgba(95,241,251,0.5);
-  border-radius: 3px;
+}
+
+.profileStatWrapper {
+  background-image: linear-gradient(to left, #ffb4bc, #f6adc7, #e7a9d2, #d1a7dd, #b5a7e4, #afa1e5, #a99be6, #a395e7, #c082db, #dc6bc3, #f251a1, #fd3777);
+  border: 3px solid #ffb4bc;
+  box-shadow: 0px 0px 10px 6px rgba(255,180,188,0.7);
 }
 
 .scoreStatsHeader {
   text-align: center;
   width: 11vw;
-  /* box-shadow: 0px 0px 10px 6px rgba(95,241,251,0.7); */
   font-family: 'Outrun Future';
-  /* text-shadow: 1p */
   text-shadow: 1px 1px 2px #d16ba5, 0 0 15px #ba83ca, 0 0 5px #46eefa;
-  /* background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); */
   color: #fff;
+  font-size: 1.05em;
   border-radius: 3px;
+  height: fit-content;
 }
 
 .scoreStats {
