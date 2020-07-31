@@ -117,28 +117,30 @@ nav > * {
 }
 
 .filterWrapper {
-  height: 10vh;
-  margin: 5vh auto;
-  /* border: 1px solid red; */
-  /* width: 5px; */
-  border-radius: 20px;
+  height: 15vh;
   position: absolute;
-  width: 60vw;
+  width: 70vw;
   backdrop-filter: blur(25px);
   z-index: 1;
   top: 0;
+  right: -50px;
+  display: grid;
+  place-items: center;
+  /* box-shadow: 10px 10px 10px transparent; */
 }
 
 .searchBar {
   font-size: 1.2em;
   height: 4vh;
-  color: red;
-  background-color: transparent;
+  color: #000;
+  background-color: #2de2e6;
   border: none;
+  font-family: 'VCR Mono';
   outline: none;
-  border-bottom: 3px solid #F9c80e;
-  filter: drop-shadow(0 10px 1rem rgba(249, 200, 14,0.7));
-  width: 35vw;
+  border-radius: 5px;
+  border: 3px solid #2de2e6;
+  box-shadow: 0px 0px 10px 6px rgba(45, 236, 230,0.7);
+  width: 40vw;
 }
 
 .content {
@@ -652,7 +654,7 @@ h3 {
 
 .errorMsg {
   /* border: 1px solid red; */
-  margin: 15px auto 0; 
+  margin: 15px auto 0;
 }
 
 /* here we go with media queries */
